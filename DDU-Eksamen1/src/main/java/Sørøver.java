@@ -1,0 +1,2 @@
+public class Sørøver {
+}
