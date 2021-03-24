@@ -22,16 +22,17 @@ boolean pieceHeld=false;
     void checkIfClicked(){
         if(p.mousePressed&&p.mouseX> posX &&p.mouseX< posX +80&&p.mouseY> posY &&p.mouseY< posY +80){
             pieceHeld=true;
+            posX =p.mouseX-40;
+            posY =p.mouseY-40;
             System.out.println("clicked");
         } else if(!mousePressed){
             pieceHeld=false;
             System.out.println("not clicked");
         }
-        //p.rect(posX,posX+80,posY,posY+80);
+        //p.rect(posX,posY,80,80);
 
-        if(pieceHeld=true){
-            posX =mouseX-40;
-            posY =mouseY-40;
-        }
+
+
+
     }
 }

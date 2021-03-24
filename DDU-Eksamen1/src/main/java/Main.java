@@ -66,12 +66,12 @@ public class Main extends PApplet{
         image(blueMatros,width/2+55,450);
 
         System.out.println(width/2-45);
-        matros1.drawBoardPiece(blueMatros);
+
     }
 
     @Override
     public void draw(){
-
+        matros1.drawBoardPiece(blueMatros);
         matros1.checkIfClicked();
     }
 
