@@ -16,6 +16,9 @@ public class Main extends PApplet{
     PImage blueMatros;
 
     Matros matros1;
+    Matros matros2;
+    Matros matros3;
+    Matros matros4;
 
 
     public static void main(String[] args) {
@@ -42,7 +45,7 @@ public class Main extends PApplet{
         blueSoeroever=loadImage("ddu-srver-bla.jpg");
         blueMatros=loadImage("ddu-matros-bla.jpg");
 
-        image(board,0,0);
+
         image(redCaptain,width/2-45,50);
         image(redSkipper,width/2-145,50);
         image(redSkipper,width/2+55,50);
@@ -60,22 +63,42 @@ public class Main extends PApplet{
         image(blueSoeroever,width/2-45,450);
         image(blueSoeroever,width/2-245,450);
         image(blueSoeroever,width/2+155,450);
-        //image(blueMatros,width/2-245,550);
+        /*image(blueMatros,width/2-245,550);
         image(blueMatros,width/2+155,550);
         image(blueMatros,width/2-145,450);
-        image(blueMatros,width/2+55,450);
+        image(blueMatros,width/2+55,450);*/
 
-        System.out.println(width/2-45);
+        //System.out.println(width/2-245);
 
     }
 
     @Override
     public void draw(){
-        matros1.drawBoardPiece(blueMatros);
-        matros1.checkIfClicked();
+        clear();
+        image(board,0,0);
+        matrosserne();
+
     }
 
     void instances(){
         matros1 = new Matros(width/2-245,550,this);
+        matros2 = new Matros(width/2-145,450,this);
+        matros3 = new Matros(width/2+55,450,this);
+        matros4 = new Matros(width/2+155,550,this);
+    }
+
+    void matrosserne(){
+        matros1.drawBoardPiece(blueMatros);
+        matros1.checkIfClicked();
+
+        matros2.drawBoardPiece(blueMatros);
+        matros2.checkIfClicked();
+
+        matros3.drawBoardPiece(blueMatros);
+        matros3.checkIfClicked();
+
+        matros4.drawBoardPiece(blueMatros);
+        matros4.checkIfClicked();
+
     }
 }
