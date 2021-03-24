@@ -15,6 +15,9 @@ public class Main extends PApplet{
     PImage blueSoeroever;
     PImage blueMatros;
 
+    Matros matros1;
+
+
     public static void main(String[] args) {
         PApplet.main("Main");
     }
@@ -26,6 +29,8 @@ public class Main extends PApplet{
 
     @Override
     public void setup(){
+        instances();
+
         board=loadImage("ddu-brt2.jpg");
         redCaptain=loadImage("ddu-kaptajn-rd.jpg");
         redSkipper=loadImage("ddu-skipper-rd.jpg");
@@ -55,11 +60,22 @@ public class Main extends PApplet{
         image(blueSoeroever,width/2-45,450);
         image(blueSoeroever,width/2-245,450);
         image(blueSoeroever,width/2+155,450);
-        image(blueMatros,width/2-245,550);
+        //image(blueMatros,width/2-245,550);
         image(blueMatros,width/2+155,550);
         image(blueMatros,width/2-145,450);
         image(blueMatros,width/2+55,450);
 
         System.out.println(width/2-45);
+        matros1.drawBoardPiece(blueMatros);
+    }
+
+    @Override
+    public void draw(){
+
+        matros1.checkIfClicked();
+    }
+
+    void instances(){
+        matros1 = new Matros(width/2-245,550,this);
     }
 }
