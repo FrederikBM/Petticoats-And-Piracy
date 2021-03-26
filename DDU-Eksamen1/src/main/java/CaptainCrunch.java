@@ -22,7 +22,6 @@ public class CaptainCrunch {
             pieceHeld=true;
             posX =p.mouseX-40;
             posY =p.mouseY-40;
-            System.out.println("clicked");
         } else if(!p.mousePressed){
             for(int i = 40;i<p.width/2+235;i+=100){
                 for(int t = 50;t<650;t+=100){
@@ -35,10 +34,7 @@ public class CaptainCrunch {
                 }
             }
             pieceHeld=false;
-            System.out.println(posX);
-            System.out.println("not clicked");
         }
-        //p.rect(posX,posY,80,80);
 
 
 

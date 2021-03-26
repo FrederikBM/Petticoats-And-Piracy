@@ -20,6 +20,7 @@ public class Main extends PApplet{
     ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
 
+    boolean boardPieceClicked = false;
     CaptainCrunch captain;
 
 
@@ -78,6 +79,7 @@ public class Main extends PApplet{
         image(board,0,0);
         matrosserne();
         soeroeverne();
+        skipperne();
         captain();
     }
 
@@ -109,9 +111,6 @@ public class Main extends PApplet{
             Skipperne.add(new Skipper(width/2-145+(i*200),550,this));
         }
 
-        //captain
-        for(int i = 0; i<3;i++){
-        }
     }
 
     void matrosserne(){
@@ -132,17 +131,14 @@ public class Main extends PApplet{
 
     void skipperne(){
         for(int i=0;i<Skipperne.size();i++){
-            Skipperne s = Skipperne.get(i);
+            Skipper s = Skipperne.get(i);
             s.drawBoardPiece(blueSkipper);
             s.checkIfClicked();
         }
     }
 
     void captain(){
-        for(int i = 0; i<CaptainCrunch.size();i++){
-            Captaincrunch c = CaptainCrunch.get(i);
-            c.drawBoardPiece(blueCaptain);
-            c.checkIfClicked();
+            captain.drawBoardPiece(blueCaptain);
+            captain.checkIfClicked();
         }
-    }
 }
