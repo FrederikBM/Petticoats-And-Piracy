@@ -27,11 +27,11 @@ boolean pieceHeld=false;
             System.out.println("clicked");
         } else if(!p.mousePressed){
            for(int i = 40;i<p.width/2+235;i+=100){
-               for(int t = 50;t<550;t+=100){
-                   if(posX+40>i&&posX+40<i+99){
+               for(int t = 50;t<650;t+=100){
+                   if(posX+40>i&&posX+40<i+100){
                        posX=i;
                    }
-                   if(posY+40>t&&posY+40<t+99){
+                   if(posY+40>t&&posY+40<t+100){
                        posY=t;
                    }
                }
