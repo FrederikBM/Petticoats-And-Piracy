@@ -75,12 +75,34 @@ public class Main extends PApplet{
 
     @Override
     public void draw(){
-        clear();
-        image(board,0,0);
+        drawStart();
         matrosserne();
         soeroeverne();
         skipperne();
         captain();
+    }
+
+    @Override
+    public void mousePressed(){
+
+    }
+
+    @Override
+    public void mouseReleased(){
+
+    }
+
+    @Override
+    public void mouseDragged(){
+        for(int i = 0; i<Matrosserne.size()+Soeroeverne.size()+Skipperne.size()+1; i++){
+            Matros m = Matrosserne.get(i);
+            Soeroever so = Soeroeverne.get(i);
+            Skipper sk = Skipperne.get(i);
+
+            if(m.pieceHeld==true){
+
+            }
+        }
     }
 
     void instances(){
@@ -113,6 +135,11 @@ public class Main extends PApplet{
 
     }
 
+    void drawStart(){
+        clear();
+        image(board,0,0);
+    }
+
     void matrosserne(){
         for(int i = 0; i<Matrosserne.size();i++){
             Matros m = Matrosserne.get(i);
@@ -123,17 +150,17 @@ public class Main extends PApplet{
 
     void soeroeverne(){
         for(int i=0;i<Soeroeverne.size();i++){
-            Soeroever s = Soeroeverne.get(i);
-            s.drawBoardPiece(blueSoeroever);
-            s.checkIfClicked();
+            Soeroever so = Soeroeverne.get(i);
+            so.drawBoardPiece(blueSoeroever);
+            so.checkIfClicked();
         }
     }
 
     void skipperne(){
         for(int i=0;i<Skipperne.size();i++){
-            Skipper s = Skipperne.get(i);
-            s.drawBoardPiece(blueSkipper);
-            s.checkIfClicked();
+            Skipper sk = Skipperne.get(i);
+            sk.drawBoardPiece(blueSkipper);
+            sk.checkIfClicked();
         }
     }
 
