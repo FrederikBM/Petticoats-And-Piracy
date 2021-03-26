@@ -3,6 +3,7 @@ import processing.core.PImage;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Main extends PApplet{
     PImage board;
@@ -15,10 +16,9 @@ public class Main extends PApplet{
     PImage blueSoeroever;
     PImage blueMatros;
 
-    Matros matros1;
-    Matros matros2;
-    Matros matros3;
-    Matros matros4;
+    ArrayList<Matros> Matrosserne = new ArrayList<Matros>();
+    ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
+    ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
 
 
     public static void main(String[] args) {
@@ -60,9 +60,6 @@ public class Main extends PApplet{
         image(blueCaptain,width/2-45,550);
         image(blueSkipper,width/2-145,550);
         image(blueSkipper,width/2+55,550);
-        image(blueSoeroever,width/2-45,450);
-        image(blueSoeroever,width/2-245,450);
-        image(blueSoeroever,width/2+155,450);
         /*image(blueMatros,width/2-245,550);
         image(blueMatros,width/2+155,550);
         image(blueMatros,width/2-145,450);
@@ -77,28 +74,49 @@ public class Main extends PApplet{
         clear();
         image(board,0,0);
         matrosserne();
-
+        soeroeverne();
     }
 
     void instances(){
-        matros1 = new Matros(width/2-245,550,this);
-        matros2 = new Matros(width/2-145,450,this);
-        matros3 = new Matros(width/2+55,450,this);
-        matros4 = new Matros(width/2+155,550,this);
+        //matrosserne
+        for(int i = 0; i<4;i++){
+            int a = width/2+(-245+(i*100));
+            if(a<width/2+(-245+(2*100))){
+                a = width/2+(-245+(i*100));
+            } else {
+                a+=100;
+            }
+            int t = 550;
+            if(a==width/2-245||a==width/2+155){
+                t=550;
+            } else {
+                t=450;
+            }
+            Matrosserne.add(new Matros(a,t,this));
+        }
+
+        //sørøverne
+        for(int i = 0; i<3;i++){
+            Soeroeverne.add(new Soeroever(width/2-245+(i*200),450,this));
+        }
+
+        //skipperne
+        for
     }
 
     void matrosserne(){
-        matros1.drawBoardPiece(blueMatros);
-        matros1.checkIfClicked();
+        for(int i = 0; i<Matrosserne.size();i++){
+            Matros m = Matrosserne.get(i);
+            m.drawBoardPiece(blueMatros);
+            m.checkIfClicked();
+        }
+    }
 
-        matros2.drawBoardPiece(blueMatros);
-        matros2.checkIfClicked();
-
-        matros3.drawBoardPiece(blueMatros);
-        matros3.checkIfClicked();
-
-        matros4.drawBoardPiece(blueMatros);
-        matros4.checkIfClicked();
-
+    void soeroeverne(){
+        for(int i=0;i<Soeroeverne.size();i++){
+            Soeroever s = Soeroeverne.get(i);
+            s.drawBoardPiece(blueSoeroever);
+            s.checkIfClicked();
+        }
     }
 }

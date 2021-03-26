@@ -15,8 +15,8 @@ boolean pieceHeld=false;
         this.p=p;
     }
 
-    void drawBoardPiece(PImage matros){
-        p.image(matros, posX, posY);
+    void drawBoardPiece(PImage boardPiece){
+        p.image(boardPiece, posX, posY);
     }
 
     void checkIfClicked(){
