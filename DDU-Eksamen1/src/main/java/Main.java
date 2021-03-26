@@ -20,6 +20,8 @@ public class Main extends PApplet{
     ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
 
+    CaptianCrunch captain;
+
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -32,6 +34,7 @@ public class Main extends PApplet{
 
     @Override
     public void setup(){
+        captain = new CaptainCrunch(width/2-45,550,this);
         instances();
 
         board=loadImage("ddu-brt2.jpg");
@@ -75,6 +78,7 @@ public class Main extends PApplet{
         image(board,0,0);
         matrosserne();
         soeroeverne();
+        captain();
     }
 
     void instances(){
@@ -102,6 +106,11 @@ public class Main extends PApplet{
 
         //skipperne
         for
+
+        //captain
+        for(int i = 0; i<3;i++){
+            CaptainCrunch.add(new CaptainCrunch(width/2-245+(i*200),450,this));
+        }
     }
 
     void matrosserne(){
@@ -117,6 +126,14 @@ public class Main extends PApplet{
             Soeroever s = Soeroeverne.get(i);
             s.drawBoardPiece(blueSoeroever);
             s.checkIfClicked();
+        }
+    }
+
+    void captain(){
+        for(int i = 0; i<CaptainCrunch.size();i++){
+            Captaincrunch c = CaptainCrunch.get(i);
+            c.drawBoardPiece(blueCaptain);
+            c.checkIfClicked();
         }
     }
 }
