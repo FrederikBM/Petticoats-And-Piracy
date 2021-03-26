@@ -16,16 +16,9 @@ public class Main extends PApplet{
     PImage blueSoeroever;
     PImage blueMatros;
 
-    Matros matros1;
-    Matros matros2;
-    Matros matros3;
-    Matros matros4;
-    Soeroever soeroever1;
-    Soeroever soeroever2;
-    Soeroever soeroever3;
-
     ArrayList<Matros> Matrosserne = new ArrayList<Matros>();
     ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
+    ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
 
 
     public static void main(String[] args) {
@@ -106,6 +99,9 @@ public class Main extends PApplet{
         for(int i = 0; i<3;i++){
             Soeroeverne.add(new Soeroever(width/2-245+(i*200),450,this));
         }
+
+        //skipperne
+        for
     }
 
     void matrosserne(){
