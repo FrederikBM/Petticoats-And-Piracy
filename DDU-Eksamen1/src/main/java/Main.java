@@ -20,7 +20,7 @@ public class Main extends PApplet{
     ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
 
-    CaptianCrunch captain;
+    CaptainCrunch captain;
 
 
     public static void main(String[] args) {
@@ -105,11 +105,12 @@ public class Main extends PApplet{
         }
 
         //skipperne
-        for
+        for(int i = 0; i<2;i++){
+            Skipperne.add(new Skipper(width/2-145+(i*200),550,this));
+        }
 
         //captain
         for(int i = 0; i<3;i++){
-            CaptainCrunch.add(new CaptainCrunch(width/2-245+(i*200),450,this));
         }
     }
 

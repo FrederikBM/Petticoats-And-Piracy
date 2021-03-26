@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class CaptianCrunch {
+public class CaptainCrunch {
     PApplet p;
     int posX;
     int posY;
