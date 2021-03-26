@@ -130,6 +130,14 @@ public class Main extends PApplet{
         }
     }
 
+    void skipperne(){
+        for(int i=0;i<Skipperne.size();i++){
+            Skipperne s = Skipperne.get(i);
+            s.drawBoardPiece(blueSkipper);
+            s.checkIfClicked();
+        }
+    }
+
     void captain(){
         for(int i = 0; i<CaptainCrunch.size();i++){
             Captaincrunch c = CaptainCrunch.get(i);
