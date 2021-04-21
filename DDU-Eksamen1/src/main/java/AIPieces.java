@@ -5,7 +5,6 @@ public class AIPieces {
     PApplet p;
     int posX;
     int posY;
-    boolean pieceHeld = false;
 
     AIPieces(PApplet p, int posX, int posY){
         this.p = p;
