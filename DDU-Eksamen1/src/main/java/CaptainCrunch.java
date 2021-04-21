@@ -20,6 +20,7 @@ public class CaptainCrunch {
     void checkIfClicked(){
         if(p.mousePressed&&p.mouseX> posX &&p.mouseX< posX +80&&p.mouseY> posY &&p.mouseY< posY +80){
             pieceHeld=true;
+            System.out.println(pieceHeld);
             posX =p.mouseX-40;
             posY =p.mouseY-40;
         } else if(!p.mousePressed){
