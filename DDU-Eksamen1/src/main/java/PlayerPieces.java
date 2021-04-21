@@ -2,10 +2,10 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class PlayerPieces {
-PApplet p;
-int posX;
-int posY;
-boolean pieceHeld = false;
+    PApplet p;
+    int posX;
+    int posY;
+    boolean pieceHeld = false;
 
     PlayerPieces(PApplet p, int posX, int posY){
      this.p = p;
