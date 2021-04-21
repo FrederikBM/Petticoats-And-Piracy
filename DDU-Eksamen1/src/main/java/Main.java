@@ -125,7 +125,7 @@ public class Main extends PApplet{
             } else {
                 t=450;
             }
-            Matrosserne.add(new Matros(a,t,this));
+            Matrosserne.add(new Matros(this,a,t));
         }
 
         //sørøverne
