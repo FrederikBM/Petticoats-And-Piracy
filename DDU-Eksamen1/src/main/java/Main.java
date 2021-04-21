@@ -20,6 +20,9 @@ public class Main extends PApplet{
     ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
 
+    boolean boardPieceClicked = false;
+    CaptainCrunch captain;
+
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -32,6 +35,7 @@ public class Main extends PApplet{
 
     @Override
     public void setup(){
+        captain = new CaptainCrunch(width/2-45,550,this);
         instances();
 
         board=loadImage("ddu-brt2.jpg");
@@ -71,10 +75,39 @@ public class Main extends PApplet{
 
     @Override
     public void draw(){
-        clear();
-        image(board,0,0);
+        drawStart();
         matrosserne();
         soeroeverne();
+        skipperne();
+        captain();
+    }
+
+    @Override
+    public void mousePressed(){
+
+    }
+
+    @Override
+    public void mouseReleased(){
+
+    }
+
+    @Override
+    public void mouseDragged(){
+        for(int i = 0; i<Matrosserne.size(); i++){
+            Matros m = Matrosserne.get(i);
+            if(i<3) {
+                Soeroever so = Soeroeverne.get(i);
+            }
+            if(i<2) {
+                Skipper sk = Skipperne.get(i);
+            }
+            //captain.
+
+            if(m.pieceHeld==true){
+
+            }
+        }
     }
 
     void instances(){
@@ -101,7 +134,15 @@ public class Main extends PApplet{
         }
 
         //skipperne
-        for
+        for(int i = 0; i<2;i++){
+            Skipperne.add(new Skipper(width/2-145+(i*200),550,this));
+        }
+
+    }
+
+    void drawStart(){
+        clear();
+        image(board,0,0);
     }
 
     void matrosserne(){
@@ -114,9 +155,22 @@ public class Main extends PApplet{
 
     void soeroeverne(){
         for(int i=0;i<Soeroeverne.size();i++){
-            Soeroever s = Soeroeverne.get(i);
-            s.drawBoardPiece(blueSoeroever);
-            s.checkIfClicked();
+            Soeroever so = Soeroeverne.get(i);
+            so.drawBoardPiece(blueSoeroever);
+            so.checkIfClicked();
         }
     }
+
+    void skipperne(){
+        for(int i=0;i<Skipperne.size();i++){
+            Skipper sk = Skipperne.get(i);
+            sk.drawBoardPiece(blueSkipper);
+            sk.checkIfClicked();
+        }
+    }
+
+    void captain(){
+            captain.drawBoardPiece(blueCaptain);
+            captain.checkIfClicked();
+        }
 }

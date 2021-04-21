@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Matros extends PApplet{
+public class Matros{
 PApplet p;
 
 int posX;
@@ -22,10 +22,11 @@ boolean pieceHeld=false;
     void checkIfClicked(){
         if(p.mousePressed&&p.mouseX> posX &&p.mouseX< posX +80&&p.mouseY> posY &&p.mouseY< posY +80){
             pieceHeld=true;
+            System.out.println(pieceHeld);
             posX =p.mouseX-40;
             posY =p.mouseY-40;
-            System.out.println("clicked");
         } else if(!p.mousePressed){
+            pieceHeld=false;
            for(int i = 40;i<p.width/2+235;i+=100){
                for(int t = 50;t<650;t+=100){
                    if(posX+40>i&&posX+40<i+100){
@@ -37,13 +38,6 @@ boolean pieceHeld=false;
                }
             }
             pieceHeld=false;
-            System.out.println(posX);
-            System.out.println("not clicked");
         }
-        //p.rect(posX,posY,80,80);
-
-
-
-
     }
 }
