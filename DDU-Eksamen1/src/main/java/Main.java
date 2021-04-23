@@ -49,27 +49,8 @@ public class Main extends PApplet{
         blueSoeroever=loadImage("ddu-srver-bla.jpg");
         blueMatros=loadImage("ddu-matros-bla.jpg");
 
-
-        image(redCaptain,width/2-45,50);
-        image(redSkipper,width/2-145,50);
-        image(redSkipper,width/2+55,50);
-        image(redSoeroever,width/2-45,150);
-        image(redSoeroever,width/2-245,150);
-        image(redSoeroever,width/2+155,150);
-        image(redMatros,width/2-245,50);
-        image(redMatros,width/2+155,50);
-        image(redMatros,width/2-145,150);
-        image(redMatros,width/2+55,150);
-
-        image(blueCaptain,width/2-45,550);
-        image(blueSkipper,width/2-145,550);
-        image(blueSkipper,width/2+55,550);
-        /*image(blueMatros,width/2-245,550);
-        image(blueMatros,width/2+155,550);
-        image(blueMatros,width/2-145,450);
-        image(blueMatros,width/2+55,450);*/
-
         //System.out.println(width/2-245);
+
 
     }
 
@@ -94,20 +75,7 @@ public class Main extends PApplet{
 
     @Override
     public void mouseDragged(){
-        for(int i = 0; i<Matrosserne.size(); i++){
-            Matros m = Matrosserne.get(i);
-            if(i<3) {
-                Soeroever so = Soeroeverne.get(i);
-            }
-            if(i<2) {
-                Skipper sk = Skipperne.get(i);
-            }
-            //captain.
 
-            if(m.pieceHeld==true){
-
-            }
-        }
     }
 
     void instances(){
@@ -173,4 +141,21 @@ public class Main extends PApplet{
             captain.drawBoardPiece(blueCaptain);
             captain.checkIfClicked();
         }
+
+        /*void bricks(){
+            for(int i = 0; i<Matrosserne.size(); i++){
+                Matros m = Matrosserne.get(i);
+                if(i<3) {
+                    Soeroever so = Soeroeverne.get(i);
+                }
+                if(i<2) {
+                    Skipper sk = Skipperne.get(i);
+                }
+                //captain.
+
+                if(m.pieceHeld==true){
+
+                }
+            }
+        }*/
 }
