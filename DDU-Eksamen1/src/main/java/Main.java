@@ -94,10 +94,15 @@ public class Main extends PApplet{
 
     @Override
     public void mouseDragged(){
-        for(int i = 0; i<Matrosserne.size()+Soeroeverne.size()+Skipperne.size()+1; i++){
+        for(int i = 0; i<Matrosserne.size(); i++){
             Matros m = Matrosserne.get(i);
-            Soeroever so = Soeroeverne.get(i);
-            Skipper sk = Skipperne.get(i);
+            if(i<3) {
+                Soeroever so = Soeroeverne.get(i);
+            }
+            if(i<2) {
+                Skipper sk = Skipperne.get(i);
+            }
+            //captain.
 
             if(m.pieceHeld==true){
 
@@ -120,7 +125,7 @@ public class Main extends PApplet{
             } else {
                 t=450;
             }
-            Matrosserne.add(new Matros(a,t,this));
+            Matrosserne.add(new Matros(this,a,t));
         }
 
         //sørøverne
