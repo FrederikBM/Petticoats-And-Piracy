@@ -21,6 +21,7 @@ public class PlayerPieces {
             System.out.println(pieceHeld);
             posX =p.mouseX-40;
             posY =p.mouseY-40;
+
         } else if(!p.mousePressed){
             pieceHeld=false;
             for(int i = 40;i<p.width/2+235;i+=100){
