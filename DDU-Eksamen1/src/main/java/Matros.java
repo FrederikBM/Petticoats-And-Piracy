@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class Matros extends PlayerPieces{
 
-    Matros( PApplet p, int posX, int posY){
-        super(p, posX, posY);
+    Matros(int posX, int posY, PImage PIa, PApplet p) {
+        super(p, posX, posY, PIa);
         this.posX = posX;
         this.posY = posY;
         this.p = p;

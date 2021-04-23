@@ -1,8 +1,6 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Main extends PApplet{
@@ -16,13 +14,12 @@ public class Main extends PApplet{
     PImage blueSoeroever;
     PImage blueMatros;
 
-    ArrayList<Matros> Matrosserne = new ArrayList<Matros>();
-    ArrayList<Soeroever> Soeroeverne = new ArrayList<Soeroever>();
-    ArrayList<Skipper> Skipperne = new ArrayList<Skipper>();
-
-    boolean boardPieceClicked = false;
+    ArrayList<Matros> matrosserne = new ArrayList<Matros>();
+    ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
+    ArrayList<Skipper> skipperne = new ArrayList<Skipper>();
     CaptainCrunch captain;
 
+    ArrayList allPieces = new ArrayList();
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -35,8 +32,6 @@ public class Main extends PApplet{
 
     @Override
     public void setup(){
-        captain = new CaptainCrunch(width/2-45,550,this);
-        instances();
 
         board=loadImage("ddu-brt2.jpg");
         redCaptain=loadImage("ddu-kaptajn-rd.jpg");
@@ -49,18 +44,17 @@ public class Main extends PApplet{
         blueSoeroever=loadImage("ddu-srver-bla.jpg");
         blueMatros=loadImage("ddu-matros-bla.jpg");
 
-        //System.out.println(width/2-245);
-
-
+        instances();
     }
 
     @Override
     public void draw(){
         drawStart();
-        matrosserne();
+        bricks();
+        /*matrosserne();
         soeroeverne();
         skipperne();
-        captain();
+        captain();*/
     }
 
     @Override
@@ -93,19 +87,27 @@ public class Main extends PApplet{
             } else {
                 t=450;
             }
-            Matrosserne.add(new Matros(this,a,t));
+            matrosserne.add(new Matros(a,t,blueMatros,this));
         }
 
         //sørøverne
         for(int i = 0; i<3;i++){
-            Soeroeverne.add(new Soeroever(width/2-245+(i*200),450,this));
+            soeroeverne.add(new Soeroever(width/2-245+(i*200),450,blueSoeroever ,this));
         }
 
         //skipperne
         for(int i = 0; i<2;i++){
-            Skipperne.add(new Skipper(width/2-145+(i*200),550,this));
+            skipperne.add(new Skipper(width/2-145+(i*200),550,blueSkipper,this));
         }
 
+        captain = new CaptainCrunch(width/2-45,550, blueCaptain,this);
+
+        allPieces.addAll(matrosserne);
+        allPieces.addAll(soeroeverne);
+        allPieces.addAll(skipperne);
+        allPieces.add(captain);
+
+        System.out.println(allPieces);
     }
 
     void drawStart(){
@@ -113,7 +115,34 @@ public class Main extends PApplet{
         image(board,0,0);
     }
 
-    void matrosserne(){
+    void bricks(){
+        for(int i = 0; i< matrosserne.size(); i++){
+            Matros m = matrosserne.get(i);
+            Soeroever so;
+            Skipper sk;
+
+            m.drawBoardPiece();
+            m.checkIfClicked();
+
+            if(i<3) {
+                so = soeroeverne.get(i);
+                so.drawBoardPiece();
+                so.checkIfClicked();
+            }
+            if(i<2) {
+                sk = skipperne.get(i);
+                sk.drawBoardPiece();
+                sk.checkIfClicked();
+            }
+            //captain.
+            captain.drawBoardPiece();
+            captain.checkIfClicked();
+
+
+        }
+    }
+
+    /*void matrosserne(){
         for(int i = 0; i<Matrosserne.size();i++){
             Matros m = Matrosserne.get(i);
             m.drawBoardPiece(blueMatros);
@@ -140,22 +169,7 @@ public class Main extends PApplet{
     void captain(){
             captain.drawBoardPiece(blueCaptain);
             captain.checkIfClicked();
-        }
-
-        /*void bricks(){
-            for(int i = 0; i<Matrosserne.size(); i++){
-                Matros m = Matrosserne.get(i);
-                if(i<3) {
-                    Soeroever so = Soeroeverne.get(i);
-                }
-                if(i<2) {
-                    Skipper sk = Skipperne.get(i);
-                }
-                //captain.
-
-                if(m.pieceHeld==true){
-
-                }
-            }
         }*/
+
+
 }
