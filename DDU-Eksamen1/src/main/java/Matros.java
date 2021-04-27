@@ -8,5 +8,6 @@ public class Matros extends PlayerPieces{
         this.posX = posX;
         this.posY = posY;
         this.p = p;
+        this.PIa=PIa;
     }
 }

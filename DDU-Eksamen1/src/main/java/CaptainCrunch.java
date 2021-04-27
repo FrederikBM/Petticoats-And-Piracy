@@ -8,5 +8,6 @@ public class CaptainCrunch extends PlayerPieces {
         this.posX = posX;
         this.posY = posY;
         this.p = p;
+        this.PIa=PIa;
     }
 }

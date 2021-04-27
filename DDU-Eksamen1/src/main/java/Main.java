@@ -13,13 +13,13 @@ public class Main extends PApplet{
     PImage blueSkipper;
     PImage blueSoeroever;
     PImage blueMatros;
-
+    int selectedPieceID=-1;
     ArrayList<Matros> matrosserne = new ArrayList<Matros>();
     ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> skipperne = new ArrayList<Skipper>();
     CaptainCrunch captain;
 
-    ArrayList allPieces = new ArrayList();
+    ArrayList<PlayerPieces> allPieces = new ArrayList<PlayerPieces>();
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -116,7 +116,22 @@ public class Main extends PApplet{
     }
 
     void bricks(){
-        for(int i = 0; i< matrosserne.size(); i++){
+
+        for(int i=0;i<allPieces.size();i++){
+            PlayerPieces ap = allPieces.get(i);
+            ap.pieceID=i;
+            ap.drawBoardPiece();
+            if(selectedPieceID>-1&&selectedPieceID==ap.pieceID){
+
+                ap.checkIfClicked();
+            }
+            else {
+                ap.checkIfClicked();
+                selectedPieceID=ap.pieceID;
+            }
+        }
+
+       /*for(int i = 0; i< matrosserne.size(); i++){
             Matros m = matrosserne.get(i);
             Soeroever so;
             Skipper sk;
@@ -138,8 +153,7 @@ public class Main extends PApplet{
             captain.drawBoardPiece();
             captain.checkIfClicked();
 
-
-        }
+        }*/
     }
 
     /*void matrosserne(){

@@ -9,6 +9,7 @@ public class PlayerPieces {
     int lengthX = 80;
     int lengthY = 80;
     boolean pieceHeld = false;
+    int pieceID;
 
     PlayerPieces(PApplet p, int posX, int posY, PImage PIa){
      this.p = p;
