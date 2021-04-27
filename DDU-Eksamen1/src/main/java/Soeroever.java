@@ -10,4 +10,7 @@ public class Soeroever extends PlayerPieces{
         this.p = p;
         this.PIa=PIa;
     }
+    void HI(){
+        System.out.println(pieceHeld);
+    }
 }
