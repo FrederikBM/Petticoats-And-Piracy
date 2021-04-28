@@ -3,7 +3,7 @@ import processing.core.PImage;
 
 import java.util.ArrayList;
 
-public class Main extends PApplet{
+public class Main extends PApplet {
     PImage board;
     PImage redCaptain;
     PImage redSkipper;
@@ -13,7 +13,7 @@ public class Main extends PApplet{
     PImage blueSkipper;
     PImage blueSoeroever;
     PImage blueMatros;
-    int selectedPieceID=-1;
+    int selectedPieceID = -1;
     ArrayList<Matros> matrosserne = new ArrayList<Matros>();
     ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> skipperne = new ArrayList<Skipper>();
@@ -31,26 +31,26 @@ public class Main extends PApplet{
     }
 
     @Override
-    public void setup(){
+    public void setup() {
 
-        board=loadImage("ddu-brt2.jpg");
-        redCaptain=loadImage("ddu-kaptajn-rd.jpg");
-        redSkipper=loadImage("ddu-skipper-rd.jpg");
-        redSoeroever=loadImage("ddu-srver-rd.jpg");
-        redMatros=loadImage("ddu-matros-rd.jpg");
+        board = loadImage("ddu-brt2.jpg");
+        redCaptain = loadImage("ddu-kaptajn-rd.jpg");
+        redSkipper = loadImage("ddu-skipper-rd.jpg");
+        redSoeroever = loadImage("ddu-srver-rd.jpg");
+        redMatros = loadImage("ddu-matros-rd.jpg");
 
-        blueCaptain=loadImage("ddu-kaptajn-bla.jpg");
-        blueSkipper=loadImage("ddu-skipper-bla.jpg");
-        blueSoeroever=loadImage("ddu-srver-bla.jpg");
-        blueMatros=loadImage("ddu-matros-bla.jpg");
+        blueCaptain = loadImage("ddu-kaptajn-bla.jpg");
+        blueSkipper = loadImage("ddu-skipper-bla.jpg");
+        blueSoeroever = loadImage("ddu-srver-bla.jpg");
+        blueMatros = loadImage("ddu-matros-bla.jpg");
 
         instances();
     }
 
     @Override
-    public void draw(){
+    public void draw() {
         drawStart();
-        bricks();
+        drawPieces();
         /*matrosserne();
         soeroeverne();
         skipperne();
@@ -58,49 +58,49 @@ public class Main extends PApplet{
     }
 
     @Override
-    public void mousePressed(){
+    public void mousePressed() {
 
     }
 
     @Override
-    public void mouseReleased(){
-
+    public void mouseReleased() {
+        clickPieces();
     }
 
     @Override
-    public void mouseDragged(){
+    public void mouseDragged() {
 
     }
 
-    void instances(){
+    void instances() {
         //matrosserne
-        for(int i = 0; i<4;i++){
-            int a = width/2+(-245+(i*100));
-            if(a<width/2+(-245+(2*100))){
-                a = width/2+(-245+(i*100));
+        for (int i = 0; i < 4; i++) {
+            int a = width / 2 + (-245 + (i * 100));
+            if (a < width / 2 + (-245 + (2 * 100))) {
+                a = width / 2 + (-245 + (i * 100));
             } else {
-                a+=100;
+                a += 100;
             }
             int t = 550;
-            if(a==width/2-245||a==width/2+155){
-                t=550;
+            if (a == width / 2 - 245 || a == width / 2 + 155) {
+                t = 550;
             } else {
-                t=450;
+                t = 450;
             }
-            matrosserne.add(new Matros(a,t,blueMatros,this));
+            matrosserne.add(new Matros(a, t, blueMatros, this));
         }
 
         //sørøverne
-        for(int i = 0; i<3;i++){
-            soeroeverne.add(new Soeroever(width/2-245+(i*200),450,blueSoeroever ,this));
+        for (int i = 0; i < 3; i++) {
+            soeroeverne.add(new Soeroever(width / 2 - 245 + (i * 200), 450, blueSoeroever, this));
         }
 
         //skipperne
-        for(int i = 0; i<2;i++){
-            skipperne.add(new Skipper(width/2-145+(i*200),550,blueSkipper,this));
+        for (int i = 0; i < 2; i++) {
+            skipperne.add(new Skipper(width / 2 - 145 + (i * 200), 550, blueSkipper, this));
         }
 
-        captain = new CaptainCrunch(width/2-45,550, blueCaptain,this);
+        captain = new CaptainCrunch(width / 2 - 45, 550, blueCaptain, this);
 
         allPieces.addAll(matrosserne);
         allPieces.addAll(soeroeverne);
@@ -110,51 +110,51 @@ public class Main extends PApplet{
         System.out.println(allPieces);
     }
 
-    void drawStart(){
+    void drawStart() {
         clear();
-        image(board,0,0);
+        image(board, 0, 0);
     }
 
-    void bricks(){
+    void drawPieces() {
 
-        for(int i=0;i<allPieces.size();i++){
+        for (int i = 0; i < allPieces.size(); i++) {
             PlayerPieces ap = allPieces.get(i);
-            ap.pieceID=i;
             ap.drawBoardPiece();
-            if(selectedPieceID>-1&&selectedPieceID==ap.pieceID){
-
-                ap.checkIfClicked();
-            }
-            else {
-                ap.checkIfClicked();
-                selectedPieceID=ap.pieceID;
-            }
+            ap.pieceMover();
         }
+    }
 
-       /*for(int i = 0; i< matrosserne.size(); i++){
+    void clickPieces() {
+        for(int i = 0; i< matrosserne.size(); i++){
             Matros m = matrosserne.get(i);
             Soeroever so;
             Skipper sk;
 
-            m.drawBoardPiece();
+            //matrosserne
             m.checkIfClicked();
 
+            //sørøverne
             if(i<3) {
                 so = soeroeverne.get(i);
-                so.drawBoardPiece();
                 so.checkIfClicked();
             }
+
+            //skipperne
             if(i<2) {
                 sk = skipperne.get(i);
-                sk.drawBoardPiece();
                 sk.checkIfClicked();
             }
+
             //captain.
-            captain.drawBoardPiece();
             captain.checkIfClicked();
 
-        }*/
+        }
     }
+
+
+
+
+
 
     /*void matrosserne(){
         for(int i = 0; i<Matrosserne.size();i++){
@@ -184,6 +184,6 @@ public class Main extends PApplet{
             captain.drawBoardPiece(blueCaptain);
             captain.checkIfClicked();
         }*/
-
-
 }
+
+
