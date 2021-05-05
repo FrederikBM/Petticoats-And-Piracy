@@ -139,6 +139,7 @@ public class Main extends PApplet {
             if(i<3) {
                 so = soeroeverne.get(i);
                 so.checkIfClicked();
+                so.checkIfReleased();
             }
 
             //skipperne
