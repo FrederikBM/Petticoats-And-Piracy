@@ -148,8 +148,9 @@ public class Main extends PApplet {
                 sk.checkIfReleased();
             }
 
-            //captain.
+            //captain
             captain.checkIfClicked();
+            captain.checkIfReleased();
 
         }
     }

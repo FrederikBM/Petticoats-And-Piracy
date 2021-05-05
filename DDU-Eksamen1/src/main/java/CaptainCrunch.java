@@ -10,6 +10,10 @@ public class CaptainCrunch extends PlayerPieces {
         this.p = p;
         this.PIa=PIa;
     }
-
-
+    void checkIfReleased(){
+        if (pieceHeld&&p.mouseX > OriPosX-tileBorder && p.mouseX < OriPosX + lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder) {
+            piecePlacer();
+            System.out.println("halllooo");
+        }
+    }
 }
