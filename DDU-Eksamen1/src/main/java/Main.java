@@ -17,7 +17,7 @@ public class Main extends PApplet {
     ArrayList<Matros> matrosserne = new ArrayList<Matros>();
     ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> skipperne = new ArrayList<Skipper>();
-    CaptainCrunch captain;
+    ArrayList<CaptainCrunch> captain = new ArrayList<CaptainCrunch>();
 
     ArrayList<PlayerPieces> allPieces = new ArrayList<PlayerPieces>();
 
@@ -65,7 +65,6 @@ public class Main extends PApplet {
     @Override
     public void mouseReleased() {
         clickPieces();
-
     }
 
     @Override
@@ -101,12 +100,12 @@ public class Main extends PApplet {
             skipperne.add(new Skipper(width / 2 - 145 + (i * 200), 550, blueSkipper, this));
         }
 
-        captain = new CaptainCrunch(width / 2 - 45, 550, blueCaptain, this);
+        captain.add(new CaptainCrunch(width / 2 - 45, 550, blueCaptain, this));
 
         allPieces.addAll(matrosserne);
         allPieces.addAll(soeroeverne);
         allPieces.addAll(skipperne);
-        allPieces.add(captain);
+        allPieces.addAll(captain);
 
         System.out.println(allPieces);
     }
@@ -130,6 +129,7 @@ public class Main extends PApplet {
             Matros m = matrosserne.get(i);
             Soeroever so;
             Skipper sk;
+            CaptainCrunch cc;
 
             //matrosserne
             m.checkIfClicked();
@@ -149,8 +149,11 @@ public class Main extends PApplet {
             }
 
             //captain
-            captain.checkIfClicked();
-            captain.checkIfReleased();
+            if(i<1) {
+                cc = captain.get(i);
+                cc.checkIfClicked();
+                cc.checkIfReleased();
+            }
 
         }
     }
