@@ -65,6 +65,7 @@ public class Main extends PApplet {
     @Override
     public void mouseReleased() {
         clickPieces();
+
     }
 
     @Override
@@ -132,6 +133,7 @@ public class Main extends PApplet {
 
             //matrosserne
             m.checkIfClicked();
+            m.checkIfReleased();
 
             //sørøverne
             if(i<3) {

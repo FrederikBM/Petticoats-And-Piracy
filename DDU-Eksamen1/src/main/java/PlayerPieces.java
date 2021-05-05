@@ -11,6 +11,7 @@ public class PlayerPieces {
     boolean pieceHeld = false;
     int OriPosX;
     int OriPosY;
+    int tileBorder=20;
 
     PlayerPieces(PApplet p, int posX, int posY, PImage PIa) {
         this.p = p;
@@ -48,5 +49,19 @@ public class PlayerPieces {
             posX = p.mouseX - lengthX / 2;
             posY = p.mouseY - lengthY / 2;
         }
+    }
+
+    void piecePlacer(){
+        for (int i = 40; i < p.width / 2 + 235; i += 100) {
+            for (int t = 50; t < 650; t += 100) {
+                if (posX + lengthX / 2 > i && posX + lengthX / 2 < i + 100) {
+                    posX = i;
+                }
+                if (posY + lengthY / 2 > t && posY + lengthY / 2 < t + 100) {
+                    posY = t;
+                }
+            }
+        }
+        pieceHeld = false;
     }
 }
