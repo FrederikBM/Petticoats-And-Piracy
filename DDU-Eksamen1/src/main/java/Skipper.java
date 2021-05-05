@@ -10,5 +10,14 @@ public class Skipper extends PlayerPieces {
         this.p = p;
         this.PIa=PIa;
     }
+
+    void checkIfReleased(){
+        if (pieceHeld&&p.mouseX > OriPosX-tileBorder && p.mouseX < OriPosX+lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder||
+        pieceHeld&&p.mouseX > OriPosX-100-tileBorder && p.mouseX < OriPosX-100+lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder||
+        pieceHeld&&p.mouseX > OriPosX+100-tileBorder && p.mouseX < OriPosX+100+lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder||
+        pieceHeld&&p.mouseX > OriPosX-tileBorder && p.mouseX < OriPosX+lengthX+tileBorder && p.mouseY > OriPosY+100-tileBorder && p.mouseY < OriPosY + lengthY+100+tileBorder){
+            piecePlacer();
+        }
+    }
 }
 

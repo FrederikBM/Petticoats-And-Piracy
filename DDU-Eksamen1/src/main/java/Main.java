@@ -145,6 +145,7 @@ public class Main extends PApplet {
             if(i<2) {
                 sk = skipperne.get(i);
                 sk.checkIfClicked();
+                sk.checkIfReleased();
             }
 
             //captain
