@@ -193,21 +193,21 @@ public class Main extends PApplet {
             //sørøverne
             if(i<3) {
                 so = soeroeverne.get(i);
-                so.checkIfReleased();
+                so.checkIfReleased(tgl.toogled);
                 so.checkIfClicked(tgl.toogled);
             }
 
             //skipperne
             if(i<2) {
                 sk = skipperne.get(i);
-                sk.checkIfReleased();
+                sk.checkIfReleased(tgl.toogled);
                 sk.checkIfClicked(tgl.toogled);
             }
 
             //captain
             if(i<1) {
                 cc = captain.get(i);
-                cc.checkIfReleased();
+                cc.checkIfReleased(tgl.toogled);
                 cc.checkIfClicked(tgl.toogled);
             }
 
