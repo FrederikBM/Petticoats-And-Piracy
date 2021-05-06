@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class CaptainCrunchAI extends AIPieces {
 
-    CaptainCrunchAI(int posX, int posY, PApplet p) {
-        super(p, posX, posY);
+    CaptainCrunchAI(int posX, int posY, PImage PIa, PApplet p) {
+        super(p, posX, posY, PIa);
         this.posX = posX;
         this.posY = posY;
         this.p = p;

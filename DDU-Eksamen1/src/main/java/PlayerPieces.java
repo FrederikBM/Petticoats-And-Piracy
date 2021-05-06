@@ -24,8 +24,8 @@ public class PlayerPieces {
         p.image(PIa, posX, posY);
     }
 
-    void checkIfClicked() {
-        if (!pieceHeld&&p.mouseX > posX && p.mouseX < posX + lengthX && p.mouseY > posY && p.mouseY < posY + lengthY) {
+    void checkIfClicked(boolean toogle) {
+        if (!toogle&&p.mouseX > posX && p.mouseX < posX + lengthX && p.mouseY > posY && p.mouseY < posY + lengthY) {
             pieceHeld = true;
             OriPosX=posX;
             OriPosY=posY;

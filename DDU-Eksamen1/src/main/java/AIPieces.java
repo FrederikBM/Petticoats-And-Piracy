@@ -5,16 +5,19 @@ public class AIPieces {
     PApplet p;
     int posX;
     int posY;
+    PImage PIa;
 
-    AIPieces(PApplet p, int posX, int posY){
+    AIPieces(PApplet p, int posX, int posY, PImage PIa){
         this.p = p;
         this.posX=posX;
         this.posY=posY;
+        this.PIa=PIa;
     }
 
-    void drawBoardPiece(PImage boardPiece){
-        p.image(boardPiece, posX, posY);
+    void drawBoardPiece(){
+        p.image(PIa, posX, posY);
     }
+
 
 
 }

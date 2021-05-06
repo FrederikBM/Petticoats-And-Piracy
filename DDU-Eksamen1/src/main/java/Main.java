@@ -13,13 +13,23 @@ public class Main extends PApplet {
     PImage blueSkipper;
     PImage blueSoeroever;
     PImage blueMatros;
-    int selectedPieceID = -1;
+
+    Toogle tgl = new Toogle();
+
     ArrayList<Matros> matrosserne = new ArrayList<Matros>();
     ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> skipperne = new ArrayList<Skipper>();
     ArrayList<CaptainCrunch> captain = new ArrayList<CaptainCrunch>();
 
-    ArrayList<PlayerPieces> allPieces = new ArrayList<PlayerPieces>();
+    ArrayList<MatrosAI> AImatrosserne = new ArrayList<MatrosAI>();
+    ArrayList<SoeroeverAI> AIsoeroeverne = new ArrayList<SoeroeverAI>();
+    ArrayList<SkipperAI> AIskipperne = new ArrayList<SkipperAI>();
+    ArrayList<CaptainCrunchAI> AIcaptain = new ArrayList<CaptainCrunchAI>();
+
+    ArrayList<PlayerPieces> allPlayerPieces = new ArrayList<PlayerPieces>();
+    ArrayList<AIPieces> allAIPieces = new ArrayList<AIPieces>();
+
+
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -44,7 +54,8 @@ public class Main extends PApplet {
         blueSoeroever = loadImage("ddu-srver-bla.jpg");
         blueMatros = loadImage("ddu-matros-bla.jpg");
 
-        instances();
+        playerInstances();
+        AIInstances();
     }
 
     @Override
@@ -59,12 +70,12 @@ public class Main extends PApplet {
 
     @Override
     public void mousePressed() {
-
     }
 
     @Override
     public void mouseReleased() {
         clickPieces();
+        tgl.tooglePick();
     }
 
     @Override
@@ -72,7 +83,7 @@ public class Main extends PApplet {
 
     }
 
-    void instances() {
+    void playerInstances() {
         //matrosserne
         for (int i = 0; i < 4; i++) {
             int a = width / 2 + (-245 + (i * 100));
@@ -100,14 +111,53 @@ public class Main extends PApplet {
             skipperne.add(new Skipper(width / 2 - 145 + (i * 200), 550, blueSkipper, this));
         }
 
+        //captain
         captain.add(new CaptainCrunch(width / 2 - 45, 550, blueCaptain, this));
 
-        allPieces.addAll(matrosserne);
-        allPieces.addAll(soeroeverne);
-        allPieces.addAll(skipperne);
-        allPieces.addAll(captain);
+        allPlayerPieces.addAll(matrosserne);
+        allPlayerPieces.addAll(soeroeverne);
+        allPlayerPieces.addAll(skipperne);
+        allPlayerPieces.addAll(captain);
 
-        System.out.println(allPieces);
+        System.out.println(allPlayerPieces);
+    }
+
+    void AIInstances (){
+        for (int i = 0; i < 4; i++) {
+            int a = width / 2 + (-245 + (i * 100));
+            if (a < width / 2 + (-245 + (2 * 100))) {
+                a = width / 2 + (-245 + (i * 100));
+            } else {
+                a += 100;
+            }
+            int t = 50;
+            if (a == width / 2 - 245 || a == width / 2 + 155) {
+                t = 50;
+            } else {
+                t = 150;
+            }
+            AImatrosserne.add(new MatrosAI(a, t, redMatros, this));
+        }
+
+        //sørøverne
+        for (int i = 0; i < 3; i++) {
+            AIsoeroeverne.add(new SoeroeverAI(width / 2 - 245 + (i * 200), 150, redSoeroever, this));
+        }
+
+        //skipperne
+        for (int i = 0; i < 2; i++) {
+            AIskipperne.add(new SkipperAI(width / 2 - 145 + (i * 200), 50, redSkipper, this));
+        }
+
+        //captain
+        AIcaptain.add(new CaptainCrunchAI(width / 2 - 45, 50, redCaptain, this));
+
+        allAIPieces.addAll(AImatrosserne);
+        allAIPieces.addAll(AIsoeroeverne);
+        allAIPieces.addAll(AIskipperne);
+        allAIPieces.addAll(AIcaptain);
+
+        System.out.println(allAIPieces);
     }
 
     void drawStart() {
@@ -117,10 +167,15 @@ public class Main extends PApplet {
 
     void drawPieces() {
 
-        for (int i = 0; i < allPieces.size(); i++) {
-            PlayerPieces ap = allPieces.get(i);
-            ap.drawBoardPiece();
-            ap.pieceMover();
+        for (int i = 0; i < allPlayerPieces.size(); i++) {
+            PlayerPieces pp = allPlayerPieces.get(i);
+            pp.drawBoardPiece();
+            pp.pieceMover();
+        }
+
+        for(int i = 0; i<allAIPieces.size();i++){
+            AIPieces aip = allAIPieces.get(i);
+            aip.drawBoardPiece();
         }
     }
 
@@ -132,28 +187,28 @@ public class Main extends PApplet {
             CaptainCrunch cc;
 
             //matrosserne
-            m.checkIfClicked();
-            m.checkIfReleased();
+            m.checkIfClicked(tgl.toogled);
+            m.checkIfReleased(tgl.toogled);
 
             //sørøverne
             if(i<3) {
                 so = soeroeverne.get(i);
-                so.checkIfClicked();
                 so.checkIfReleased();
+                so.checkIfClicked(tgl.toogled);
             }
 
             //skipperne
             if(i<2) {
                 sk = skipperne.get(i);
-                sk.checkIfClicked();
                 sk.checkIfReleased();
+                sk.checkIfClicked(tgl.toogled);
             }
 
             //captain
             if(i<1) {
                 cc = captain.get(i);
-                cc.checkIfClicked();
                 cc.checkIfReleased();
+                cc.checkIfClicked(tgl.toogled);
             }
 
         }
