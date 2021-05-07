@@ -21,8 +21,6 @@ public class Soeroever extends PlayerPieces {
                 || pieceHeld && p.mouseX > OriPosX - 200 - tileBorder && p.mouseX < OriPosX - 200 + lengthX + tileBorder && p.mouseY > OriPosY + 200 - tileBorder && p.mouseY < OriPosY + lengthY + 200 + tileBorder//to gange ned venstre
                 || pieceHeld && p.mouseX > OriPosX + 200 - tileBorder && p.mouseX < OriPosX + 200 + lengthX + tileBorder && p.mouseY > OriPosY + 200 - tileBorder && p.mouseY < OriPosY + lengthY + 200 + tileBorder) {//to gange ned højre
             piecePlacer();
-        } else if (pieceHeld && p.mouseX > OriPosX - tileBorder && p.mouseX < OriPosX + lengthX + tileBorder && p.mouseY > OriPosY - tileBorder && p.mouseY < OriPosY + lengthY + tileBorder){
-            piecePlacer();
         }
     }
 
