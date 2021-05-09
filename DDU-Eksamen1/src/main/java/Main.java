@@ -14,7 +14,6 @@ public class Main extends PApplet {
     PImage blueSoeroever;
     PImage blueMatros;
 
-    Toogle tgl = new Toogle();
 
     ArrayList<Matros> matrosserne = new ArrayList<Matros>();
     ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
@@ -29,7 +28,7 @@ public class Main extends PApplet {
     ArrayList<PlayerPieces> allPlayerPieces = new ArrayList<PlayerPieces>();
     ArrayList<AIPieces> allAIPieces = new ArrayList<AIPieces>();
 
-
+    boolean isAPieceHeld = false;
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -75,7 +74,6 @@ public class Main extends PApplet {
     @Override
     public void mouseReleased() {
         clickPieces();
-        tgl.tooglePick();
     }
 
     @Override
@@ -187,31 +185,32 @@ public class Main extends PApplet {
             CaptainCrunch cc;
 
             //matrosserne
-            m.checkIfClicked(tgl.toogled);
-            m.checkIfReleased(tgl.toogled);
+            m.checkIfClicked();
+            isAPieceHeld=m.checkIfReleased();
 
             //sørøverne
-            if(i<3) {
+            if(i<soeroeverne.size()) {
                 so = soeroeverne.get(i);
                 so.checkIfReleased();
-                so.checkIfClicked(tgl.toogled);
+                so.checkIfClicked();
             }
 
             //skipperne
-            if(i<2) {
+            if(i<skipperne.size()) {
                 sk = skipperne.get(i);
                 sk.checkIfReleased();
-                sk.checkIfClicked(tgl.toogled);
+                sk.checkIfClicked();
             }
 
             //captain
-            if(i<1) {
+            if(i<captain.size()) {
                 cc = captain.get(i);
+                cc.checkIfClicked();
                 cc.checkIfReleased();
-                cc.checkIfClicked(tgl.toogled);
-            }
 
+            }
         }
+        System.out.println("Piece held: " + isAPieceHeld);
     }
 
 
