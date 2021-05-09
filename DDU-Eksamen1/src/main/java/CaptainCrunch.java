@@ -11,5 +11,16 @@ public class CaptainCrunch extends PlayerPieces {
         this.PIa=PIa;
     }
 
-
+    void checkIfReleased(){
+        if (pieceHeld&&p.mouseX > OriPosX-100-tileBorder && p.mouseX < OriPosX-100+lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder // én gang op venstre
+                ||pieceHeld&&p.mouseX > OriPosX-100-tileBorder && p.mouseX < OriPosX-100+lengthX+tileBorder && p.mouseY > OriPosY-tileBorder && p.mouseY < OriPosY + lengthY+tileBorder // én gang til venstre
+                ||pieceHeld&&p.mouseX > OriPosX-100-tileBorder && p.mouseX < OriPosX-100+lengthX+tileBorder && p.mouseY > OriPosY+100-tileBorder && p.mouseY < OriPosY + lengthY+100+tileBorder // én gang ned venstre
+                ||pieceHeld&&p.mouseX > OriPosX+100-tileBorder && p.mouseX < OriPosX+100+lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder // én gang op højre
+                ||pieceHeld&&p.mouseX > OriPosX+100-tileBorder && p.mouseX < OriPosX+100+lengthX+tileBorder && p.mouseY > OriPosY-tileBorder && p.mouseY < OriPosY + lengthY+tileBorder // én gang til højre
+                ||pieceHeld&&p.mouseX > OriPosX+100-tileBorder && p.mouseX < OriPosX+100+lengthX+tileBorder && p.mouseY > OriPosY+100-tileBorder && p.mouseY < OriPosY + lengthY+100+tileBorder){ //en gang ned højre
+            piecePlacer();
+        } else if (pieceHeld && p.mouseX > OriPosX - tileBorder && p.mouseX < OriPosX + lengthX + tileBorder && p.mouseY > OriPosY - tileBorder && p.mouseY < OriPosY + lengthY + tileBorder){
+            piecePlacer();
+        }
+    }
 }
