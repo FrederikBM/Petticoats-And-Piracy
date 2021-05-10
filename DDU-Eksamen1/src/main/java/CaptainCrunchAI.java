@@ -9,4 +9,23 @@ public class CaptainCrunchAI extends AIPieces {
         this.posY = posY;
         this.p = p;
     }
+
+
+    void instantiateArray() {
+
+        for (int i = 0; i < 3; i++) {
+            if (i < 1) {
+                moves.add(new AIMoves(posX - (addX), posY + (addY - (addX * i)), p));
+                moves.add(new AIMoves(posX + (addX), posY + (addY - (addX * i)), p));
+            }
+        }
+    }
+
+    void moveSet(){
+        oriPosX=posX;
+        oriPosY=posY;
+        for(int i = 0; i<moves.size();i++){
+
+        }
+    }
 }

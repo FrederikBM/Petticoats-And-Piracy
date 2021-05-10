@@ -55,16 +55,13 @@ public class Main extends PApplet {
 
         playerInstances();
         AIInstances();
+        AIMovesInstances();
     }
 
     @Override
     public void draw() {
         drawStart();
         drawPieces();
-        /*matrosserne();
-        soeroeverne();
-        skipperne();
-        captain();*/
     }
 
     @Override
@@ -162,6 +159,37 @@ public class Main extends PApplet {
         System.out.println(allAIPieces);
     }
 
+    void AIMovesInstances(){
+        for(int i = 0; i< AImatrosserne.size(); i++){
+            MatrosAI AIm = AImatrosserne.get(i);
+            SoeroeverAI AIso;
+            SkipperAI AIsk;
+            CaptainCrunchAI AIcc;
+
+            //matrosserne
+            AIm.instantiateArray();
+
+            //sørøverne
+            if(i<AIsoeroeverne.size()) {
+                AIso = AIsoeroeverne.get(i);
+                AIso.instantiateArray();
+            }
+
+            //skipperne
+            if(i<AIskipperne.size()) {
+                AIsk = AIskipperne.get(i);
+                AIsk.instantiateArray();
+            }
+
+            //captain
+            if(i<AIcaptain.size()) {
+                AIcc = AIcaptain.get(i);
+                AIcc.instantiateArray();
+
+            }
+        }
+    }
+
     void drawStart() {
         clear();
         image(board, 0, 0);
@@ -242,38 +270,4 @@ public class Main extends PApplet {
             }
         }
     }
-
-
-
-
-    /*void matrosserne(){
-        for(int i = 0; i<Matrosserne.size();i++){
-            Matros m = Matrosserne.get(i);
-            m.drawBoardPiece(blueMatros);
-            m.checkIfClicked();
-        }
-    }
-
-    void soeroeverne(){
-        for(int i=0;i<Soeroeverne.size();i++){
-            Soeroever so = Soeroeverne.get(i);
-            so.drawBoardPiece(blueSoeroever);
-            so.checkIfClicked();
-        }
-    }
-
-    void skipperne(){
-        for(int i=0;i<Skipperne.size();i++){
-            Skipper sk = Skipperne.get(i);
-            sk.drawBoardPiece(blueSkipper);
-            sk.checkIfClicked();
-        }
-    }
-
-    void captain(){
-            captain.drawBoardPiece(blueCaptain);
-            captain.checkIfClicked();
-        }*/
 }
-
-
