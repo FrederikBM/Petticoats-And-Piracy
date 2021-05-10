@@ -28,7 +28,7 @@ public class Main extends PApplet {
     ArrayList<PlayerPieces> allPlayerPieces = new ArrayList<PlayerPieces>();
     ArrayList<AIPieces> allAIPieces = new ArrayList<AIPieces>();
 
-    boolean isAPieceHeld = false;
+    Toggle tggl = new Toggle();
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -73,8 +73,11 @@ public class Main extends PApplet {
 
     @Override
     public void mouseReleased() {
-        deselectPieces();
+        tggl.tooglePick();
+        if(!tggl.pieceSelected)
         selectPieces();
+        else
+        deselectPieces();
     }
 
     @Override
@@ -207,7 +210,6 @@ public class Main extends PApplet {
 
             }
         }
-        System.out.println("Piece held: " + isAPieceHeld);
     }
 
     void deselectPieces() {
@@ -239,7 +241,6 @@ public class Main extends PApplet {
 
             }
         }
-        System.out.println("Piece held: " + isAPieceHeld);
     }
 
 

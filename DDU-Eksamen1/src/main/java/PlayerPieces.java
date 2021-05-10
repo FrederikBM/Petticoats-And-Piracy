@@ -66,6 +66,7 @@ public class PlayerPieces {
     }
 
     void bounceBack(){
-
+        posX=OriPosX;
+        posY=OriPosY;
     }
 }
