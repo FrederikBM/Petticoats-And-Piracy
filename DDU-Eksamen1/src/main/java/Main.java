@@ -73,7 +73,8 @@ public class Main extends PApplet {
 
     @Override
     public void mouseReleased() {
-        clickPieces();
+        deselectPieces();
+        selectPieces();
     }
 
     @Override
@@ -177,7 +178,7 @@ public class Main extends PApplet {
         }
     }
 
-    void clickPieces() {
+    void selectPieces() {
         for(int i = 0; i< matrosserne.size(); i++){
             Matros m = matrosserne.get(i);
             Soeroever so;
@@ -186,19 +187,16 @@ public class Main extends PApplet {
 
             //matrosserne
             m.checkIfClicked();
-            isAPieceHeld=m.checkIfReleased();
 
             //sørøverne
             if(i<soeroeverne.size()) {
                 so = soeroeverne.get(i);
-                so.checkIfReleased();
                 so.checkIfClicked();
             }
 
             //skipperne
             if(i<skipperne.size()) {
                 sk = skipperne.get(i);
-                sk.checkIfReleased();
                 sk.checkIfClicked();
             }
 
@@ -206,14 +204,43 @@ public class Main extends PApplet {
             if(i<captain.size()) {
                 cc = captain.get(i);
                 cc.checkIfClicked();
-                cc.checkIfReleased();
 
             }
         }
         System.out.println("Piece held: " + isAPieceHeld);
     }
 
+    void deselectPieces() {
+        for(int i = 0; i< matrosserne.size(); i++){
+            Matros m = matrosserne.get(i);
+            Soeroever so;
+            Skipper sk;
+            CaptainCrunch cc;
 
+            //matrosserne
+            m.checkIfReleased();
+
+            //sørøverne
+            if(i<soeroeverne.size()) {
+                so = soeroeverne.get(i);
+                so.checkIfReleased();
+            }
+
+            //skipperne
+            if(i<skipperne.size()) {
+                sk = skipperne.get(i);
+                sk.checkIfReleased();
+            }
+
+            //captain
+            if(i<captain.size()) {
+                cc = captain.get(i);
+                cc.checkIfReleased();
+
+            }
+        }
+        System.out.println("Piece held: " + isAPieceHeld);
+    }
 
 
 
