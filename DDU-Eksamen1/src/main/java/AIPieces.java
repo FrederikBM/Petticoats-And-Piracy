@@ -26,5 +26,4 @@ public class AIPieces {
         p.image(PIa, posX, posY);
     }
 
-
 }
