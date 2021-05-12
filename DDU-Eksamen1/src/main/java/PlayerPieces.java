@@ -64,4 +64,9 @@ public class PlayerPieces {
         }
         pieceHeld = false;
     }
+
+    void bounceBack(){
+        posX=OriPosX;
+        posY=OriPosY;
+    }
 }

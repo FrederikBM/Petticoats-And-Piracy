@@ -8,4 +8,30 @@ public class SkipperAI extends AIPieces{
         this.posY = posY;
         this.p = p;
     }
+
+    void instantiateArray(){
+
+        for(int i = 0; i<4; i++){
+            if(i<1){
+                moves.add(new AIMoves(posX-(addX),posY-(addY),p));
+            } else if(i<2){
+                moves.add(new AIMoves(posX+(addX),posY-(addY),p));
+            } else if(i<3){
+                moves.add(new AIMoves(posX,posY-(addY),p));
+            } else if(i<4){
+                moves.add(new AIMoves(posX,posY+(addY),p));
+            }
+
+
+
+        }
+    }
+
+    void moveSet(){
+        oriPosX=posX;
+        oriPosY=posY;
+        for(int i = 0; i<moves.size();i++){
+
+        }
+    }
 }

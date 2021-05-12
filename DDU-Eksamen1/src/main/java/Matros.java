@@ -11,10 +11,12 @@ public class Matros extends PlayerPieces{
         this.PIa=PIa;
     }
 
-    boolean checkIfReleased(){
+    void checkIfReleased(){
         if (pieceHeld&&p.mouseX > OriPosX-tileBorder && p.mouseX < OriPosX + lengthX+tileBorder && p.mouseY > OriPosY-100-tileBorder && p.mouseY < OriPosY + lengthY-100+tileBorder) { //én gang fremad
             piecePlacer();
+        } else if (pieceHeld) {
+            bounceBack();
+            piecePlacer();
         }
-        return pieceHeld;
     }
 }
