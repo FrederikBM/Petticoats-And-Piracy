@@ -71,7 +71,7 @@ public class Main extends PApplet {
     @Override
     public void mouseReleased() {
         tggl.tooglePick();
-        if(!tggl.pieceSelected)
+        if(tggl.pieceSelected)
         selectPieces();
         else
         deselectPieces();
@@ -268,6 +268,27 @@ public class Main extends PApplet {
                 cc.checkIfReleased();
 
             }
+        }
+    }
+
+    void AIMover(){
+        int r = (int)random(allAIPieces.size());
+
+        if(r<4){
+            int rm = (int)random(AImatrosserne.size());
+            AImatrosserne.get(rm).moveSet();
+
+        } else if(r<7){
+            int rso = (int)random(AIsoeroeverne.size());
+            AIsoeroeverne.get(rso).moveSet();
+
+        } else if(r<9){
+            int rsk = (int)random(AIskipperne.size());
+            AIskipperne.get(rsk).moveSet();
+
+        } else if(r<10){
+            AIcaptain.get(0).moveSet();
+
         }
     }
 }
