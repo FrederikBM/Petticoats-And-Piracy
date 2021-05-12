@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class CaptainCrunchAI extends AIPieces {
 
-    CaptainCrunchAI(int posX, int posY, PImage PIa, PApplet p) {
-        super(p, posX, posY, PIa);
+    CaptainCrunchAI(int posX, int posY, PImage PIa, int ID, PApplet p) {
+        super(p, posX, posY, PIa, ID);
         this.posX = posX;
         this.posY = posY;
         this.p = p;
@@ -24,8 +24,8 @@ public class CaptainCrunchAI extends AIPieces {
     void moveSet(){
         oriPosX=posX;
         oriPosY=posY;
-        for(int i = 0; i<moves.size();i++){
-
-        }
+        int r=(int)p.random(moves.size());
+        posX=moves.get(r).xpos;
+        posY=moves.get(r).ypos;
     }
 }

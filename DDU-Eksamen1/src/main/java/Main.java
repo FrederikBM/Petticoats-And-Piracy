@@ -70,11 +70,13 @@ public class Main extends PApplet {
 
     @Override
     public void mouseReleased() {
-        tggl.tooglePick();
-        if(tggl.pieceSelected)
-        selectPieces();
-        else
-        deselectPieces();
+        tggl.toggleClicked();
+        if(tggl.pieceSelected) {
+            selectPieces();
+        } else {
+            deselectPieces();
+            AIMover();
+        }
     }
 
     @Override
@@ -122,6 +124,8 @@ public class Main extends PApplet {
     }
 
     void AIInstances (){
+        int grantID=0;
+
         for (int i = 0; i < 4; i++) {
             int a = width / 2 + (-245 + (i * 100));
             if (a < width / 2 + (-245 + (2 * 100))) {
@@ -135,21 +139,24 @@ public class Main extends PApplet {
             } else {
                 t = 150;
             }
-            AImatrosserne.add(new MatrosAI(a, t, redMatros, this));
+            AImatrosserne.add(new MatrosAI(a, t, redMatros, grantID, this));
+            grantID++;
         }
 
         //sørøverne
         for (int i = 0; i < 3; i++) {
-            AIsoeroeverne.add(new SoeroeverAI(width / 2 - 245 + (i * 200), 150, redSoeroever, this));
+            AIsoeroeverne.add(new SoeroeverAI(width / 2 - 245 + (i * 200), 150, redSoeroever, grantID, this));
+            grantID++;
         }
 
         //skipperne
         for (int i = 0; i < 2; i++) {
-            AIskipperne.add(new SkipperAI(width / 2 - 145 + (i * 200), 50, redSkipper, this));
+            AIskipperne.add(new SkipperAI(width / 2 - 145 + (i * 200), 50, redSkipper, grantID, this));
+            grantID++;
         }
 
         //captain
-        AIcaptain.add(new CaptainCrunchAI(width / 2 - 45, 50, redCaptain, this));
+        AIcaptain.add(new CaptainCrunchAI(width / 2 - 45, 50, redCaptain, grantID, this));
 
         allAIPieces.addAll(AImatrosserne);
         allAIPieces.addAll(AIsoeroeverne);
@@ -281,6 +288,19 @@ public class Main extends PApplet {
         } else if(r<7){
             int rso = (int)random(AIsoeroeverne.size());
             AIsoeroeverne.get(rso).moveSet();
+            for(int i = 0; i<allAIPieces.size();i++) {
+                if(allAIPieces.get(i).ID!=AIsoeroeverne.get(rso).ID) {
+                    if (AIsoeroeverne.get(rso).posX==allAIPieces.get(i).posX&&AIsoeroeverne.get(rso).posY==allAIPieces.get(i).posY){
+                        AIsoeroeverne.get(rso).posX=AIsoeroeverne.get(rso).oriPosX;
+                        AIsoeroeverne.get(rso).posY=AIsoeroeverne.get(rso).oriPosY;
+                        AIMover();
+                    } else if (AIsoeroeverne.get(rso).posX<width / 2 - 245|| AIsoeroeverne.get(rso).posX>width / 2 + 155|| AIsoeroeverne.get(rso).posY<50||AIsoeroeverne.get(rso).posX>550){
+                        AIsoeroeverne.get(rso).posX=AIsoeroeverne.get(rso).oriPosX;
+                        AIsoeroeverne.get(rso).posY=AIsoeroeverne.get(rso).oriPosY;
+                        AIMover();
+                    }
+                }
+            }
 
         } else if(r<9){
             int rsk = (int)random(AIskipperne.size());

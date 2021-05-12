@@ -17,6 +17,8 @@ public class Matros extends PlayerPieces{
         } else if (pieceHeld) {
             bounceBack();
             piecePlacer();
+        } else if (pieceHeld&&p.mouseX > OriPosX-tileBorder && p.mouseX < OriPosX + lengthX+tileBorder && p.mouseY > OriPosY-tileBorder && p.mouseY < OriPosY + lengthY+tileBorder){
+            piecePlacer();
         }
     }
 }

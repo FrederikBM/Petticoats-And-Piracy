@@ -1,10 +1,12 @@
 public class Toggle {
     boolean pieceSelected = false;
 
-    void tooglePick(){
-        if(pieceSelected==false)
+    void toggleClicked() {
+
+        if (pieceSelected == false)
             pieceSelected = true;
         else
-            pieceSelected=false;
+            pieceSelected = false;
+
     }
 }
