@@ -71,7 +71,7 @@ public class Main extends PApplet {
     @Override
     public void mouseReleased() {
         tggl.toggleClicked();
-        if(tggl.pieceSelected) {
+        if (tggl.pieceSelected) {
             selectPieces();
         } else {
             deselectPieces();
@@ -123,8 +123,8 @@ public class Main extends PApplet {
         System.out.println(allPlayerPieces);
     }
 
-    void AIInstances (){
-        int grantID=0;
+    void AIInstances() {
+        int grantID = 0;
 
         for (int i = 0; i < 4; i++) {
             int a = width / 2 + (-245 + (i * 100));
@@ -166,8 +166,8 @@ public class Main extends PApplet {
         System.out.println(allAIPieces);
     }
 
-    void AIMovesInstances(){
-        for(int i = 0; i< AImatrosserne.size(); i++){
+    void AIMovesInstances() {
+        for (int i = 0; i < AImatrosserne.size(); i++) {
             MatrosAI AIm = AImatrosserne.get(i);
             SoeroeverAI AIso;
             SkipperAI AIsk;
@@ -177,19 +177,19 @@ public class Main extends PApplet {
             AIm.instantiateArray();
 
             //sørøverne
-            if(i<AIsoeroeverne.size()) {
+            if (i < AIsoeroeverne.size()) {
                 AIso = AIsoeroeverne.get(i);
                 AIso.instantiateArray();
             }
 
             //skipperne
-            if(i<AIskipperne.size()) {
+            if (i < AIskipperne.size()) {
                 AIsk = AIskipperne.get(i);
                 AIsk.instantiateArray();
             }
 
             //captain
-            if(i<AIcaptain.size()) {
+            if (i < AIcaptain.size()) {
                 AIcc = AIcaptain.get(i);
                 AIcc.instantiateArray();
 
@@ -210,14 +210,14 @@ public class Main extends PApplet {
             pp.pieceMover();
         }
 
-        for(int i = 0; i<allAIPieces.size();i++){
+        for (int i = 0; i < allAIPieces.size(); i++) {
             AIPieces aip = allAIPieces.get(i);
             aip.drawBoardPiece();
         }
     }
 
     void selectPieces() {
-        for(int i = 0; i< matrosserne.size(); i++){
+        for (int i = 0; i < matrosserne.size(); i++) {
             Matros m = matrosserne.get(i);
             Soeroever so;
             Skipper sk;
@@ -227,19 +227,19 @@ public class Main extends PApplet {
             m.checkIfClicked();
 
             //sørøverne
-            if(i<soeroeverne.size()) {
+            if (i < soeroeverne.size()) {
                 so = soeroeverne.get(i);
                 so.checkIfClicked();
             }
 
             //skipperne
-            if(i<skipperne.size()) {
+            if (i < skipperne.size()) {
                 sk = skipperne.get(i);
                 sk.checkIfClicked();
             }
 
             //captain
-            if(i<captain.size()) {
+            if (i < captain.size()) {
                 cc = captain.get(i);
                 cc.checkIfClicked();
 
@@ -248,7 +248,7 @@ public class Main extends PApplet {
     }
 
     void deselectPieces() {
-        for(int i = 0; i< matrosserne.size(); i++){
+        for (int i = 0; i < matrosserne.size(); i++) {
             Matros m = matrosserne.get(i);
             Soeroever so;
             Skipper sk;
@@ -258,19 +258,19 @@ public class Main extends PApplet {
             m.checkIfReleased();
 
             //sørøverne
-            if(i<soeroeverne.size()) {
+            if (i < soeroeverne.size()) {
                 so = soeroeverne.get(i);
                 so.checkIfReleased();
             }
 
             //skipperne
-            if(i<skipperne.size()) {
+            if (i < skipperne.size()) {
                 sk = skipperne.get(i);
                 sk.checkIfReleased();
             }
 
             //captain
-            if(i<captain.size()) {
+            if (i < captain.size()) {
                 cc = captain.get(i);
                 cc.checkIfReleased();
 
@@ -278,37 +278,79 @@ public class Main extends PApplet {
         }
     }
 
-    void AIMover(){
-        int r = (int)random(allAIPieces.size());
+    void AIMover() {
+        int r = (int) random(allAIPieces.size());
 
-        if(r<4){
-            int rm = (int)random(AImatrosserne.size());
+        if (r < 4) {
+            int rm = (int) random(AImatrosserne.size());
             AImatrosserne.get(rm).moveSet();
-
-        } else if(r<7){
-            int rso = (int)random(AIsoeroeverne.size());
-            AIsoeroeverne.get(rso).moveSet();
-            for(int i = 0; i<allAIPieces.size();i++) {
-                if(allAIPieces.get(i).ID!=AIsoeroeverne.get(rso).ID) {
-                    if (AIsoeroeverne.get(rso).posX==allAIPieces.get(i).posX&&AIsoeroeverne.get(rso).posY==allAIPieces.get(i).posY){
-                        AIsoeroeverne.get(rso).posX=AIsoeroeverne.get(rso).oriPosX;
-                        AIsoeroeverne.get(rso).posY=AIsoeroeverne.get(rso).oriPosY;
+            System.out.println("matros");
+            for (int i = 0; i < allAIPieces.size(); i++) {
+                if (allAIPieces.get(i).ID != AImatrosserne.get(rm).ID) {
+                    if (AImatrosserne.get(rm).posX == allAIPieces.get(i).posX && AImatrosserne.get(rm).posY == allAIPieces.get(i).posY) {
+                        AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
+                        AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
                         AIMover();
-                    } else if (AIsoeroeverne.get(rso).posX<width / 2 - 245|| AIsoeroeverne.get(rso).posX>width / 2 + 155|| AIsoeroeverne.get(rso).posY<50||AIsoeroeverne.get(rso).posX>550){
-                        AIsoeroeverne.get(rso).posX=AIsoeroeverne.get(rso).oriPosX;
-                        AIsoeroeverne.get(rso).posY=AIsoeroeverne.get(rso).oriPosY;
+                    } else if (AImatrosserne.get(rm).posX < width / 2 - 245 || AImatrosserne.get(rm).posX > width / 2 + 155 || AImatrosserne.get(rm).posY < 50 || AImatrosserne.get(rm).posX > 550) {
+                        AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
+                        AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
                         AIMover();
                     }
                 }
             }
 
-        } else if(r<9){
-            int rsk = (int)random(AIskipperne.size());
+        } else if (r < 7) {
+            int rso = (int) random(AIsoeroeverne.size());
+            System.out.println("soeroever");
+            AIsoeroeverne.get(rso).moveSet();
+            for (int i = 0; i < allAIPieces.size(); i++) {
+                if (allAIPieces.get(i).ID != AIsoeroeverne.get(rso).ID) {
+                    if (AIsoeroeverne.get(rso).posX == allAIPieces.get(i).posX && AIsoeroeverne.get(rso).posY == allAIPieces.get(i).posY) {
+                        AIsoeroeverne.get(rso).posX = AIsoeroeverne.get(rso).oriPosX;
+                        AIsoeroeverne.get(rso).posY = AIsoeroeverne.get(rso).oriPosY;
+                        AIMover();
+                    } else if (AIsoeroeverne.get(rso).posX < width / 2 - 245 || AIsoeroeverne.get(rso).posX > width / 2 + 155 || AIsoeroeverne.get(rso).posY < 50 || AIsoeroeverne.get(rso).posX > 550) {
+                        AIsoeroeverne.get(rso).posX = AIsoeroeverne.get(rso).oriPosX;
+                        AIsoeroeverne.get(rso).posY = AIsoeroeverne.get(rso).oriPosY;
+                        AIMover();
+                    }
+                }
+            }
+
+        } else if (r < 9) {
+            int rsk = (int) random(AIskipperne.size());
+            System.out.println("skipper");
             AIskipperne.get(rsk).moveSet();
+            for (int i = 0; i < allAIPieces.size(); i++) {
+                if (allAIPieces.get(i).ID != AIskipperne.get(rsk).ID) {
+                    if (AIskipperne.get(rsk).posX == allAIPieces.get(i).posX && AIskipperne.get(rsk).posY == allAIPieces.get(i).posY) {
+                        AIskipperne.get(rsk).posX = AIskipperne.get(rsk).oriPosX;
+                        AIskipperne.get(rsk).posY = AIskipperne.get(rsk).oriPosY;
+                        AIMover();
+                    } else if (AIskipperne.get(rsk).posX < width / 2 - 245 || AIskipperne.get(rsk).posX > width / 2 + 155 || AIskipperne.get(rsk).posY < 50 || AIskipperne.get(rsk).posX > 550) {
+                        AIskipperne.get(rsk).posX = AIskipperne.get(rsk).oriPosX;
+                        AIskipperne.get(rsk).posY = AIskipperne.get(rsk).oriPosY;
+                        AIMover();
+                    }
+                }
+            }
 
-        } else if(r<10){
+        } else if (r < 10) {
+            System.out.println("captain");
             AIcaptain.get(0).moveSet();
-
+            for (int i = 0; i < allAIPieces.size(); i++) {
+                if (allAIPieces.get(i).ID != AIcaptain.get(0).ID) {
+                    if (AIcaptain.get(0).posX == allAIPieces.get(i).posX && AIcaptain.get(0).posY == allAIPieces.get(i).posY) {
+                        AIcaptain.get(0).posX = AIcaptain.get(0).oriPosX;
+                        AIcaptain.get(0).posY = AIcaptain.get(0).oriPosY;
+                        AIMover();
+                    } else if (AIcaptain.get(0).posX < width / 2 - 245 || AIcaptain.get(0).posX > width / 2 + 155 || AIcaptain.get(0).posY < 50 || AIcaptain.get(0).posX > 550) {
+                        AIcaptain.get(0).posX = AIcaptain.get(0).oriPosX;
+                        AIcaptain.get(0).posY = AIcaptain.get(0).oriPosY;
+                        AIMover();
+                    }
+                }
+            }
         }
     }
 }
