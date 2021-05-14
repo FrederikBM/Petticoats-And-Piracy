@@ -13,17 +13,16 @@ public class MatrosAI extends AIPieces{
     }
 
     void instantiateArray(){
+        moves.clear();
         moves.add(new AIMoves(posX,posY+(addY),p));
         }
 
-    void setOriPos(){
+    void moveSet(){
         oriPosX=posX;
         oriPosY=posY;
-    }
-
-    void moveSet(){
         int r=(int)p.random(moves.size());
         posX=moves.get(r).xpos;
         posY=moves.get(r).ypos;
+        System.out.println(posX+ " " +posY);
     }
 }

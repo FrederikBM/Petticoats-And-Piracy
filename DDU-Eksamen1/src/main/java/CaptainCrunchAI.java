@@ -12,6 +12,7 @@ public class CaptainCrunchAI extends AIPieces {
 
 
     void instantiateArray() {
+        moves.clear();
 
         for (int i = 0; i < 3; i++) {
             if (i < 1) {
@@ -21,14 +22,12 @@ public class CaptainCrunchAI extends AIPieces {
         }
     }
 
-    void setOriPos(){
+    void moveSet(){
         oriPosX=posX;
         oriPosY=posY;
-    }
-
-    void moveSet(){
         int r=(int)p.random(moves.size());
         posX=moves.get(r).xpos;
         posY=moves.get(r).ypos;
+        System.out.println(posX+ " " +posY);
     }
 }

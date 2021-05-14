@@ -283,30 +283,27 @@ public class Main extends PApplet {
 
         if (r < 4) {
             int rm = (int) random(AImatrosserne.size());
-            AImatrosserne.get(rm).setOriPos();
             AImatrosserne.get(rm).moveSet();
+
             System.out.println("matros");
             for (int i = 0; i < allAIPieces.size(); i++) {
                 if (allAIPieces.get(i).ID != AImatrosserne.get(rm).ID) {
                  if (AImatrosserne.get(rm).posX == allAIPieces.get(i).posX && AImatrosserne.get(rm).posY == allAIPieces.get(i).posY) {
                         AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
                         AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
-                        AImatrosserne.get(rm).setOriPos();
                         AIMover();
-                    } else if (AImatrosserne.get(rm).posX < 0 || AImatrosserne.get(rm).posX > width-40 || AImatrosserne.get(rm).posY < 10 || AImatrosserne.get(rm).posX > 550) {
+                    } else if (AImatrosserne.get(rm).posX < 0 || AImatrosserne.get(rm).posX > width-40 || AImatrosserne.get(rm).posY < 10 || AImatrosserne.get(rm).posY > 550) {
                         AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
                         AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
-                        AImatrosserne.get(rm).setOriPos();
                         AIMover();
                     }
                 }
             }
-            System.out.println(AImatrosserne.get(rm).ID);
+            AImatrosserne.get(rm).instantiateArray();
 
         } else if (r < 7) {
             int rso = (int) random(AIsoeroeverne.size());
             System.out.println("soeroever");
-            AIsoeroeverne.get(rso).setOriPos();
             AIsoeroeverne.get(rso).moveSet();
             for (int i = 0; i < allAIPieces.size(); i++) {
                 if (allAIPieces.get(i).ID != AIsoeroeverne.get(rso).ID) {
@@ -314,57 +311,59 @@ public class Main extends PApplet {
                         AIsoeroeverne.get(rso).posX = AIsoeroeverne.get(rso).oriPosX;
                         AIsoeroeverne.get(rso).posY = AIsoeroeverne.get(rso).oriPosY;
                         AIMover();
-                    } else if (AIsoeroeverne.get(rso).posX < 0 || AIsoeroeverne.get(rso).posX > width-40 || AIsoeroeverne.get(rso).posY < 10 || AIsoeroeverne.get(rso).posX > 550) {
+                    } else if (AIsoeroeverne.get(rso).posX < 0 || AIsoeroeverne.get(rso).posX > width-40 || AIsoeroeverne.get(rso).posY < 10 || AIsoeroeverne.get(rso).posY > 550) {
                         AIsoeroeverne.get(rso).posX = AIsoeroeverne.get(rso).oriPosX;
                         AIsoeroeverne.get(rso).posY = AIsoeroeverne.get(rso).oriPosY;
                         AIMover();
                     }
                 }
             }
-            System.out.println(AIsoeroeverne.get(rso).ID);
+            AIsoeroeverne.get(rso).instantiateArray();
 
         } else if (r < 9) {
             int rsk = (int) random(AIskipperne.size());
             System.out.println("skipper");
-            AIskipperne.get(rsk).setOriPos();
             AIskipperne.get(rsk).moveSet();
             for (int i = 0; i < allAIPieces.size(); i++) {
                 if (allAIPieces.get(i).ID != AIskipperne.get(rsk).ID) {
                     if (AIskipperne.get(rsk).posX == allAIPieces.get(i).posX && AIskipperne.get(rsk).posY == allAIPieces.get(i).posY) {
                         AIskipperne.get(rsk).posX = AIskipperne.get(rsk).oriPosX;
                         AIskipperne.get(rsk).posY = AIskipperne.get(rsk).oriPosY;
-                        AIskipperne.get(rsk).setOriPos();
                         AIMover();
-                    } else if (AIskipperne.get(rsk).posX < 0 || AIskipperne.get(rsk).posX > width-40 || AIskipperne.get(rsk).posY < 10 || AIskipperne.get(rsk).posX > 550) {
+                    } else if (AIskipperne.get(rsk).posX < 0 || AIskipperne.get(rsk).posX > width-40 || AIskipperne.get(rsk).posY < 10 || AIskipperne.get(rsk).posY > 550) {
                         AIskipperne.get(rsk).posX = AIskipperne.get(rsk).oriPosX;
                         AIskipperne.get(rsk).posY = AIskipperne.get(rsk).oriPosY;
-                        AIskipperne.get(rsk).setOriPos();
                         AIMover();
                     }
                 }
             }
-            System.out.println(AIskipperne.get(rsk).ID);
+            AIskipperne.get(rsk).instantiateArray();
 
         } else if (r < 10) {
             System.out.println("captain");
-            AIcaptain.get(0).setOriPos();
             AIcaptain.get(0).moveSet();
             for (int i = 0; i < allAIPieces.size(); i++) {
                 if (allAIPieces.get(i).ID != AIcaptain.get(0).ID) {
                     if (AIcaptain.get(0).posX == allAIPieces.get(i).posX && AIcaptain.get(0).posY == allAIPieces.get(i).posY) {
                         AIcaptain.get(0).posX = AIcaptain.get(0).oriPosX;
                         AIcaptain.get(0).posY = AIcaptain.get(0).oriPosY;
-                        AIcaptain.get(0).setOriPos();
                         AIMover();
-                    } else if (AIcaptain.get(0).posX < 0 || AIcaptain.get(0).posX > width-40 || AIcaptain.get(0).posY < 10 || AIcaptain.get(0).posX > 550) {
+                    } else if (AIcaptain.get(0).posX < 0 || AIcaptain.get(0).posX > width-40 || AIcaptain.get(0).posY < 10 || AIcaptain.get(0).posY > 550) {
                         AIcaptain.get(0).posX = AIcaptain.get(0).oriPosX;
                         AIcaptain.get(0).posY = AIcaptain.get(0).oriPosY;
-                        AIcaptain.get(0).setOriPos();
                         AIMover();
                     }
                 }
             }
-            System.out.println(AIcaptain.get(0).ID);
+            AIcaptain.get(0).instantiateArray();
         }
+    }
+
+    void checkForEnemyKilled(){
+
+    }
+
+    void checkForAllyKilled(){
+
     }
 }
