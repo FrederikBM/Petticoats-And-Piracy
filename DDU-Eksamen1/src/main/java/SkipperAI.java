@@ -12,13 +12,9 @@ public class SkipperAI extends AIPieces{
     void instantiateArray(){
 
         for(int i = 0; i<4; i++){
-            if(i<1){
-                moves.add(new AIMoves(posX-(addX),posY-(addY),p));
-            } else if(i<2){
-                moves.add(new AIMoves(posX+(addX),posY-(addY),p));
-            } else if(i<3){
-                moves.add(new AIMoves(posX,posY-(addY),p));
-            } else if(i<4){
+            if(i<3) {
+                moves.add(new AIMoves(posX + (addX - (addX * i)), posY - (addY), p));
+            }else if(i<4){
                 moves.add(new AIMoves(posX,posY+(addY),p));
             }
 
@@ -27,9 +23,12 @@ public class SkipperAI extends AIPieces{
         }
     }
 
-    void moveSet(){
+    void setOriPos(){
         oriPosX=posX;
         oriPosY=posY;
+    }
+
+    void moveSet(){
         int r=(int)p.random(moves.size());
         posX=moves.get(r).xpos;
         posY=moves.get(r).ypos;

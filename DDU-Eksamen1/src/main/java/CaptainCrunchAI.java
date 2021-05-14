@@ -15,15 +15,18 @@ public class CaptainCrunchAI extends AIPieces {
 
         for (int i = 0; i < 3; i++) {
             if (i < 1) {
-                moves.add(new AIMoves(posX - (addX), posY + (addY - (addX * i)), p));
-                moves.add(new AIMoves(posX + (addX), posY + (addY - (addX * i)), p));
+                moves.add(new AIMoves(posX - (addX), posY + (addY - (addY * i)), p));
+                moves.add(new AIMoves(posX + (addX), posY + (addY - (addY * i)), p));
             }
         }
     }
 
-    void moveSet(){
+    void setOriPos(){
         oriPosX=posX;
         oriPosY=posY;
+    }
+
+    void moveSet(){
         int r=(int)p.random(moves.size());
         posX=moves.get(r).xpos;
         posY=moves.get(r).ypos;
