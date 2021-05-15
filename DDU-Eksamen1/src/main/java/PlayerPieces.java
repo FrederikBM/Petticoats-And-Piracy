@@ -12,12 +12,14 @@ public class PlayerPieces {
     int OriPosX;
     int OriPosY;
     int tileBorder=20;
+    int ID;
 
-    PlayerPieces(PApplet p, int posX, int posY, PImage PIa) {
+    PlayerPieces(PApplet p, int posX, int posY, PImage PIa, int ID) {
         this.p = p;
         this.posX = posX;
         this.posY = posY;
         this.PIa = PIa;
+        this.ID=ID;
     }
 
     void drawBoardPiece() {

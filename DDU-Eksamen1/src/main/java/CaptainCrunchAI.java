@@ -28,6 +28,5 @@ public class CaptainCrunchAI extends AIPieces {
         int r=(int)p.random(moves.size());
         posX=moves.get(r).xpos;
         posY=moves.get(r).ypos;
-        System.out.println(posX+ " " +posY);
     }
 }
