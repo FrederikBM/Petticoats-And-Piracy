@@ -375,81 +375,6 @@ public class Main extends PApplet {
         }
     }
 
-    /*void updateAIArraylists() {
-        boolean matchFound = true;
-        int minusIndex = 10 - allAIPieces.size();
-        System.out.println(minusIndex);
-
-        for (int i = 0; i < allAIPieces.size(); i++) {
-            if (!matchFound)
-                break;
-            if (i < 4 - minusIndex) {
-                for (int im = 0; im < AImatrosserne.size(); im++) {
-                    if (AImatrosserne.get(im).ID == allAIPieces.get(i).ID) {
-                        matchFound = true;
-                    } else
-                        matchFound = false;
-                    if (!matchFound)
-                        AImatrosserne.remove(im);
-                }
-            } else if (i < 7 - minusIndex) {
-                for (int iso = 0; iso < AIsoeroeverne.size(); iso++) {
-                    if (AIsoeroeverne.get(iso).ID == allAIPieces.get(iso).ID) {
-                        matchFound = true;
-                    } else
-                        matchFound = false;
-                    if (!matchFound)
-                        AIsoeroeverne.remove(iso);
-                }
-            } else if (i < 9 - minusIndex) {
-                for (int isk = 0; isk < AIskipperne.size(); isk++) {
-                    if (AIskipperne.get(isk).ID == allAIPieces.get(i).ID) {
-                        matchFound = true;
-                    } else
-                        matchFound = false;
-                    if (!matchFound)
-                        AIskipperne.remove(isk);
-                }
-            } else if (i < 10 - minusIndex) {
-                if (AIcaptain.get(0).ID == allAIPieces.get(i).ID) {
-                    matchFound = true;
-                } else
-                    matchFound = false;
-                if (!matchFound)
-                    AIcaptain.remove(0);
-            }
-
-        }
-
-        /*for(int i = 0; i<allAIPieces.size(); i++){
-            int index = 10-allAIPieces.size();
-            if(i<4-index) {
-                for(int im = 0; im<AImatrosserne.size();im++){
-                if (allAIPieces.get(i).ID !=AImatrosserne.get(im).ID) {
-                    AImatrosserne.remove(im);
-                    }
-                }
-            }
-            else if (i<7-index){
-                for(int iso = 0; iso<AIsoeroeverne.size();iso++)
-                if (allAIPieces.get(i).ID !=AIsoeroeverne.get(iso).ID){
-                    AIsoeroeverne.remove(iso);
-                }
-            }
-            else if(i<9-index){
-                for(int isk = 0; isk<AIskipperne.size();isk++){
-                if (allAIPieces.get(i).ID !=AIskipperne.get(isk).ID) {
-                    AIskipperne.remove(isk);
-                }
-                }
-            }
-            else if(i<10-index){
-                if (allAIPieces.get(i).ID !=AIcaptain.get(0).ID){
-                    AIcaptain.remove(0);
-                }
-            }
-        }*/
-
     void checkForEnemyKilled() {
         for (int i = 0; i < allPlayerPieces.size(); i++) {
             for (int q = 0; q < allAIPieces.size(); q++) {
@@ -464,7 +389,7 @@ public class Main extends PApplet {
         for (int i = 0; i < allAIPieces.size(); i++) {
             for (int q = 0; q < allPlayerPieces.size(); q++) {
                 if (allAIPieces.get(i).posX==allPlayerPieces.get(q).posX  &&  allAIPieces.get(i).posY==allPlayerPieces.get(q).posY) {
-                    allPlayerPieces.remove(i);
+                    allPlayerPieces.remove(q);
                 }
             }
         }
@@ -474,10 +399,18 @@ public class Main extends PApplet {
         boolean AIVictor = false;
         boolean playerVictor = false;
 
-        if(allAIPieces.get(allAIPieces.size()-1).ID!=9)
+        if(allAIPieces.size()>0) {
+            if (allAIPieces.get(allAIPieces.size() - 1).ID != 9)
+                playerVictor = true;
+        } else {
             playerVictor=true;
-        else if (allPlayerPieces.get(allPlayerPieces.size()-1).ID!=9)
-            playerVictor=true;
+        }
+        if(allPlayerPieces.size()>0) {
+            if (allPlayerPieces.get(allPlayerPieces.size() - 1).ID != 9)
+                AIVictor = true;
+        } else {
+            AIVictor=true;
+        }
 
 
             if(playerVictor)
@@ -489,16 +422,18 @@ public class Main extends PApplet {
 
 
     void endScreen(Boolean playerVictory){
-        fill(165,42,42);
+        fill(83,46,30);
         rect(0,0,width,height);
 
         if(playerVictory) {
             fill(0,200,0);
             rect(width/2-100,height/2-50,200,100);
+            fill(0);
             text("You Won; Play Again?",width/2-50,height/2);
         } else if(!playerVictory) {
             fill(200,0,0);
             rect(width/2-100,height/2-50,200,100);
+            fill(0);
             text("You Lost; Play Again?",width/2-50,height/2);
         }
         if(mousePressed && mouseX>width/2-100 && mouseX<width/2+100 && mouseY>height/2-50 && mouseY<height/2+50){
