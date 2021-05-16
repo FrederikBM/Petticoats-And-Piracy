@@ -307,11 +307,13 @@ public class Main extends PApplet {
             AImatrosserne.get(rm).moveSet();
             for (int i = 0; i < allAIPieces.size(); i++) {
                 if (allAIPieces.get(i).ID != AImatrosserne.get(rm).ID) {
-                    if (AImatrosserne.get(rm).posX == allAIPieces.get(i).posX && AImatrosserne.get(rm).posY == allAIPieces.get(i).posY) {
+                    if (AImatrosserne.get(rm).posX == allAIPieces.get(i).posX
+                            && AImatrosserne.get(rm).posY == allAIPieces.get(i).posY) {
                         AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
                         AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
                         AIMover();
-                    } else if (AImatrosserne.get(rm).posX < 0 || AImatrosserne.get(rm).posX > width - 40 || AImatrosserne.get(rm).posY < 10 || AImatrosserne.get(rm).posY > 550) {
+                    } else if (AImatrosserne.get(rm).posX < 0 || AImatrosserne.get(rm).posX > width - 40
+                            || AImatrosserne.get(rm).posY < 10 || AImatrosserne.get(rm).posY > 550) {
                         AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
                         AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
                         AIMover();
@@ -329,7 +331,8 @@ public class Main extends PApplet {
                         AIsoeroeverne.get(rso).posX = AIsoeroeverne.get(rso).oriPosX;
                         AIsoeroeverne.get(rso).posY = AIsoeroeverne.get(rso).oriPosY;
                         AIMover();
-                    } else if (AIsoeroeverne.get(rso).posX < 0 || AIsoeroeverne.get(rso).posX > width - 40 || AIsoeroeverne.get(rso).posY < 10 || AIsoeroeverne.get(rso).posY > 550) {
+                    } else if (AIsoeroeverne.get(rso).posX < 0 || AIsoeroeverne.get(rso).posX > width - 40
+                            || AIsoeroeverne.get(rso).posY < 10 || AIsoeroeverne.get(rso).posY > 550) {
                         AIsoeroeverne.get(rso).posX = AIsoeroeverne.get(rso).oriPosX;
                         AIsoeroeverne.get(rso).posY = AIsoeroeverne.get(rso).oriPosY;
                         AIMover();
@@ -347,7 +350,8 @@ public class Main extends PApplet {
                         AIskipperne.get(rsk).posX = AIskipperne.get(rsk).oriPosX;
                         AIskipperne.get(rsk).posY = AIskipperne.get(rsk).oriPosY;
                         AIMover();
-                    } else if (AIskipperne.get(rsk).posX < 0 || AIskipperne.get(rsk).posX > width - 40 || AIskipperne.get(rsk).posY < 10 || AIskipperne.get(rsk).posY > 550) {
+                    } else if (AIskipperne.get(rsk).posX < 0 || AIskipperne.get(rsk).posX > width - 40
+                            || AIskipperne.get(rsk).posY < 10 || AIskipperne.get(rsk).posY > 550) {
                         AIskipperne.get(rsk).posX = AIskipperne.get(rsk).oriPosX;
                         AIskipperne.get(rsk).posY = AIskipperne.get(rsk).oriPosY;
                         AIMover();
@@ -364,7 +368,8 @@ public class Main extends PApplet {
                         AIcaptain.get(0).posX = AIcaptain.get(0).oriPosX;
                         AIcaptain.get(0).posY = AIcaptain.get(0).oriPosY;
                         AIMover();
-                    } else if (AIcaptain.get(0).posX < 0 || AIcaptain.get(0).posX > width - 40 || AIcaptain.get(0).posY < 10 || AIcaptain.get(0).posY > 550) {
+                    } else if (AIcaptain.get(0).posX < 0 || AIcaptain.get(0).posX > width - 40
+                            || AIcaptain.get(0).posY < 10 || AIcaptain.get(0).posY > 550) {
                         AIcaptain.get(0).posX = AIcaptain.get(0).oriPosX;
                         AIcaptain.get(0).posY = AIcaptain.get(0).oriPosY;
                         AIMover();

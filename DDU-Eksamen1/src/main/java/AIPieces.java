@@ -28,4 +28,13 @@ public class AIPieces {
         p.image(PIa, posX, posY);
     }
 
+    void moveSet(){
+        oriPosX=posX;
+        oriPosY=posY;
+        int r=(int)p.random(moves.size());
+        posX=moves.get(r).xpos;
+        posY=moves.get(r).ypos;
+    }
 }
+
+
