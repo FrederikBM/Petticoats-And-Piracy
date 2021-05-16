@@ -15,12 +15,12 @@ public class Main extends PApplet {
     PImage blueMatros;
 
 
-    ArrayList<Matros> matrosserne = new ArrayList<Matros>();
+    ArrayList<Matros> matroserne = new ArrayList<Matros>();
     ArrayList<Soeroever> soeroeverne = new ArrayList<Soeroever>();
     ArrayList<Skipper> skipperne = new ArrayList<Skipper>();
     ArrayList<CaptainCrunch> captain = new ArrayList<CaptainCrunch>();
 
-    ArrayList<MatrosAI> AImatrosserne = new ArrayList<MatrosAI>();
+    ArrayList<MatrosAI> AImatroserne = new ArrayList<MatrosAI>();
     ArrayList<SoeroeverAI> AIsoeroeverne = new ArrayList<SoeroeverAI>();
     ArrayList<SkipperAI> AIskipperne = new ArrayList<SkipperAI>();
     ArrayList<CaptainCrunchAI> AIcaptain = new ArrayList<CaptainCrunchAI>();
@@ -67,10 +67,6 @@ public class Main extends PApplet {
     }
 
     @Override
-    public void mousePressed() {
-    }
-
-    @Override
     public void mouseReleased() {
         tggl.toggleClicked();
         if (tggl.pieceSelected) {
@@ -84,14 +80,9 @@ public class Main extends PApplet {
         }
     }
 
-    @Override
-    public void mouseDragged() {
-
-    }
-
     void playerInstances() {
         int grantID = 0;
-        matrosserne.clear();
+        matroserne.clear();
         soeroeverne.clear();
         skipperne.clear();
         captain.clear();
@@ -111,7 +102,7 @@ public class Main extends PApplet {
             } else {
                 t = 450;
             }
-            matrosserne.add(new Matros(a, t, blueMatros, grantID, this));
+            matroserne.add(new Matros(a, t, blueMatros, grantID, this));
             grantID++;
         }
 
@@ -131,7 +122,7 @@ public class Main extends PApplet {
         captain.add(new CaptainCrunch(width / 2 - 45, 550, blueCaptain, grantID, this));
 
 
-        allPlayerPieces.addAll(matrosserne);
+        allPlayerPieces.addAll(matroserne);
         allPlayerPieces.addAll(soeroeverne);
         allPlayerPieces.addAll(skipperne);
         allPlayerPieces.addAll(captain);
@@ -141,7 +132,7 @@ public class Main extends PApplet {
 
     void AIInstances() {
         int grantID = 0;
-        AImatrosserne.clear();
+        AImatroserne.clear();
         AIsoeroeverne.clear();
         AIskipperne.clear();
         AIcaptain.clear();
@@ -160,7 +151,7 @@ public class Main extends PApplet {
             } else {
                 t = 150;
             }
-            AImatrosserne.add(new MatrosAI(a, t, redMatros, grantID, this));
+            AImatroserne.add(new MatrosAI(a, t, redMatros, grantID, this));
             grantID++;
         }
 
@@ -179,7 +170,7 @@ public class Main extends PApplet {
         //captain
         AIcaptain.add(new CaptainCrunchAI(width / 2 - 45, 50, redCaptain, grantID, this));
 
-        allAIPieces.addAll(AImatrosserne);
+        allAIPieces.addAll(AImatroserne);
         allAIPieces.addAll(AIsoeroeverne);
         allAIPieces.addAll(AIskipperne);
         allAIPieces.addAll(AIcaptain);
@@ -188,8 +179,8 @@ public class Main extends PApplet {
     }
 
     void AIMovesInstances() {
-        for (int i = 0; i < AImatrosserne.size(); i++) {
-            MatrosAI AIm = AImatrosserne.get(i);
+        for (int i = 0; i < AImatroserne.size(); i++) {
+            MatrosAI AIm = AImatroserne.get(i);
             SoeroeverAI AIso;
             SkipperAI AIsk;
             CaptainCrunchAI AIcc;
@@ -238,8 +229,8 @@ public class Main extends PApplet {
     }
 
     void selectPieces() {
-        for (int i = 0; i < matrosserne.size(); i++) {
-            Matros m = matrosserne.get(i);
+        for (int i = 0; i < matroserne.size(); i++) {
+            Matros m = matroserne.get(i);
             Soeroever so;
             Skipper sk;
             CaptainCrunch cc;
@@ -269,8 +260,8 @@ public class Main extends PApplet {
     }
 
     void deselectPieces() {
-        for (int i = 0; i < matrosserne.size(); i++) {
-            Matros m = matrosserne.get(i);
+        for (int i = 0; i < matroserne.size(); i++) {
+            Matros m = matroserne.get(i);
             Soeroever so;
             Skipper sk;
             CaptainCrunch cc;
@@ -303,24 +294,24 @@ public class Main extends PApplet {
         int r = (int) random(allAIPieces.size());
 
         if (r < 4) {
-            int rm = (int) random(AImatrosserne.size());
-            AImatrosserne.get(rm).moveSet();
+            int rm = (int) random(AImatroserne.size());
+            AImatroserne.get(rm).moveSet();
             for (int i = 0; i < allAIPieces.size(); i++) {
-                if (allAIPieces.get(i).ID != AImatrosserne.get(rm).ID) {
-                    if (AImatrosserne.get(rm).posX == allAIPieces.get(i).posX
-                            && AImatrosserne.get(rm).posY == allAIPieces.get(i).posY) {
-                        AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
-                        AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
+                if (allAIPieces.get(i).ID != AImatroserne.get(rm).ID) {
+                    if (AImatroserne.get(rm).posX == allAIPieces.get(i).posX
+                            && AImatroserne.get(rm).posY == allAIPieces.get(i).posY) {
+                        AImatroserne.get(rm).posX = AImatroserne.get(rm).oriPosX;
+                        AImatroserne.get(rm).posY = AImatroserne.get(rm).oriPosY;
                         AIMover();
-                    } else if (AImatrosserne.get(rm).posX < 0 || AImatrosserne.get(rm).posX > width - 40
-                            || AImatrosserne.get(rm).posY < 10 || AImatrosserne.get(rm).posY > 550) {
-                        AImatrosserne.get(rm).posX = AImatrosserne.get(rm).oriPosX;
-                        AImatrosserne.get(rm).posY = AImatrosserne.get(rm).oriPosY;
+                    } else if (AImatroserne.get(rm).posX < 0 || AImatroserne.get(rm).posX > width - 40
+                            || AImatroserne.get(rm).posY < 10 || AImatroserne.get(rm).posY > 550) {
+                        AImatroserne.get(rm).posX = AImatroserne.get(rm).oriPosX;
+                        AImatroserne.get(rm).posY = AImatroserne.get(rm).oriPosY;
                         AIMover();
                     }
                 }
             }
-            AImatrosserne.get(rm).instantiateArray();
+            AImatroserne.get(rm).instantiateArray();
 
         } else if (r < 7) {
             int rso = (int) random(AIsoeroeverne.size());
